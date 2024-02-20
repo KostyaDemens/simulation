@@ -1,0 +1,10 @@
+package by.bsuir.kostyademens.inanimate;
+
+import by.bsuir.kostyademens.Coordinates;
+import by.bsuir.kostyademens.Entity;
+
+public class Rock extends Entity {
+    public Rock(Coordinates coordinates) {
+        super(coordinates);
+    }
+}
