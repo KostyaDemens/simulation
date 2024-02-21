@@ -7,4 +7,9 @@ public class Carrot extends Entity {
     public Carrot(Coordinates coordinates) {
         super(coordinates);
     }
+
+    @Override
+    public String toString() {
+        return "\uD83E\uDD55";
+    }
 }

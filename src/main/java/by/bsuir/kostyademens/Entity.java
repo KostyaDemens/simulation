@@ -6,5 +6,4 @@ public class Entity {
     public Entity(Coordinates coordinates) {
         this.coordinates = coordinates;
     }
-
 }

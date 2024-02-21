@@ -4,11 +4,11 @@ import by.bsuir.kostyademens.Coordinates;
 
 public class Rabbit extends Creature {
 
-    private int healPoints = 5;
+    private int healPoints;
 
-    public Rabbit(Coordinates coordinates, int speed, int healPoints) {
+    public Rabbit(Coordinates coordinates) {
         super(coordinates, 2);
-        this.healPoints = healPoints;
+        this.healPoints = 5;
     }
 
     public int getHealPoints() {
@@ -27,5 +27,10 @@ public class Rabbit extends Creature {
     @Override
     public void eat() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "\uD83D\uDC07";
     }
 }

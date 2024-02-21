@@ -3,11 +3,11 @@ package by.bsuir.kostyademens.animate;
 import by.bsuir.kostyademens.Coordinates;
 
 public class Wolf extends Creature {
-    private int damagePoints = 2;
+    private int damagePoints;
 
-    public Wolf(Coordinates coordinates, int speed, int damagePoints) {
+    public Wolf(Coordinates coordinates) {
         super(coordinates, 1);
-        this.damagePoints = damagePoints;
+        this.damagePoints = 2;
     }
 
     public int getDamagePoints() {
@@ -26,5 +26,10 @@ public class Wolf extends Creature {
     @Override
     public void eat() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "\uD83D\uDC3A";
     }
 }
