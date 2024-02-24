@@ -1,8 +1,9 @@
 package by.bsuir.kostyademens.animate;
 
 import by.bsuir.kostyademens.Coordinates;
+import by.bsuir.kostyademens.Entity;
 
-public abstract class Creature {
+public abstract class Creature extends Entity {
     private Coordinates coordinates;
     private int speed;
     public abstract void makeMove();
@@ -10,7 +11,7 @@ public abstract class Creature {
     public abstract void eat();
 
     public Creature(Coordinates coordinates, int speed) {
-        this.coordinates = coordinates;
+        super(coordinates);
         this.speed = speed;
     }
 

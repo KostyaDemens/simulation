@@ -7,7 +7,12 @@ public class Renderer {
     public void render(MapImpl map) {
         for (int i = 0; i <= map.getMapWidth(); i++) {
             for (int j = 0; j <= map.getMapHeight(); j++) {
+                if (map.isCellEmpty(new Coordinates(i, j))) {
+                    System.out.print(" . ");
+                } else {
                 System.out.print(map.getEntityFromCoordinates(new Coordinates(i, j)));
+
+                }
             }
             System.out.println();
         }
