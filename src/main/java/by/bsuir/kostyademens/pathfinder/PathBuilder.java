@@ -2,7 +2,7 @@ package by.bsuir.kostyademens.pathfinder;
 
 import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.Entity;
-import by.bsuir.kostyademens.inanimate.Rock;
+import by.bsuir.kostyademens.inanimate.Obstacle;
 import by.bsuir.kostyademens.map.MapImpl;
 
 import java.util.*;
@@ -33,7 +33,7 @@ public List<Coordinates> buildPath(MapImpl map, Coordinates from, Entity entity)
         }
 
         for (Coordinates neighbor : getListOfNeighbours(current)) {
-            if (!visited.contains(neighbor) && !(map.getEntityFromCoordinates(neighbor) instanceof Rock)) {
+            if (!visited.contains(neighbor) && !(map.getEntityFromCoordinates(neighbor) instanceof Obstacle)) {
                 visited.add(neighbor);
                 queue.add(neighbor);
                 parentMap.put(neighbor, current);
