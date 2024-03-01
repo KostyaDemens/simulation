@@ -10,4 +10,6 @@ public interface MapInterface {
 
     void moveCreature(Coordinates from, Coordinates to, Creature creature);
 
+    Entity getEntityFromCoordinates(Coordinates coordinates);
+
 }
