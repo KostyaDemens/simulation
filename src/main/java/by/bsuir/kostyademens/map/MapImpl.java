@@ -5,6 +5,7 @@ import by.bsuir.kostyademens.Entity;
 import by.bsuir.kostyademens.animate.Creature;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class MapImpl implements MapInterface {
 
@@ -26,6 +27,15 @@ public class MapImpl implements MapInterface {
     @Override
     public void moveCreature(Coordinates from, Coordinates to, Creature creature) {
 
+    }
+
+    public Entity findEntity(Class <? extends Entity> randomEntity) {
+        for (Map.Entry<Coordinates, Entity> entry : map.entrySet()) {
+            if (randomEntity.isInstance(entry.getValue())) {
+                return entry.getValue();
+            }
+        }
+        return null;
     }
 
 

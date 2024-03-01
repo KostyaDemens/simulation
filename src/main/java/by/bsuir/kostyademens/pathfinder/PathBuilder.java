@@ -10,7 +10,7 @@ import java.util.*;
 public class PathBuilder {
 
 
-public List<Coordinates> buildPath(MapInterface map, Coordinates from, Entity entity) {
+public List<Coordinates> buildPath(MapInterface map, Coordinates from, Class <? extends Entity> entity) {
     Set<Coordinates> visited = new HashSet<>();
     Queue<Coordinates> queue = new ArrayDeque<>();
     Map<Coordinates, Coordinates> parentMap = new HashMap<>(); // Карта для отслеживания родительских координат
@@ -21,9 +21,9 @@ public List<Coordinates> buildPath(MapInterface map, Coordinates from, Entity en
     while (!queue.isEmpty()) {
         Coordinates current = queue.poll();
 
-        if (current.equals(entity.getCoordinates())) {
+        if (entity.isInstance(map.getEntityFromCoordinates(current))) {
             List<Coordinates> path = new ArrayList<>();
-            Coordinates backtrack = entity.getCoordinates();
+            Coordinates backtrack = map.getEntityFromCoordinates(current).getCoordinates();
             while (backtrack != null) {
                 path.add(backtrack);
                 backtrack = parentMap.get(backtrack);
