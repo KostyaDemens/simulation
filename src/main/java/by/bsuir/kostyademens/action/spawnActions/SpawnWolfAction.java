@@ -1,7 +1,8 @@
-package by.bsuir.kostyademens.action;
+package by.bsuir.kostyademens.action.spawnActions;
 
 
 import by.bsuir.kostyademens.Coordinates;
+import by.bsuir.kostyademens.action.SpawnAction;
 import by.bsuir.kostyademens.animate.Wolf;
 import by.bsuir.kostyademens.map.MapImpl;
 

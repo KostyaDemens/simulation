@@ -5,7 +5,7 @@ import by.bsuir.kostyademens.Entity;
 import by.bsuir.kostyademens.map.MapImpl;
 
 
-public abstract class SpawnAction<T extends Entity> extends Action {
+public abstract class SpawnAction <T extends Entity> extends Action {
 
     protected int spawnRate;
 
@@ -24,6 +24,5 @@ public abstract class SpawnAction<T extends Entity> extends Action {
     }
 
     public abstract T spawnEntity(Coordinates coordinates);
-
 
 }

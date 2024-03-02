@@ -1,7 +1,7 @@
 package by.bsuir.kostyademens;
 
 
-import by.bsuir.kostyademens.action.SpawnRabbitAction;
+import by.bsuir.kostyademens.action.spawnActions.SpawnRabbitAction;
 import by.bsuir.kostyademens.animate.Rabbit;
 import by.bsuir.kostyademens.inanimate.Carrot;
 import by.bsuir.kostyademens.map.MapImpl;
