@@ -56,6 +56,8 @@ public List<Coordinates> buildPath(MapInterface map, Coordinates from, Class <? 
         }
         return listOfNeighbours;
     }
+
+
 }
 
 

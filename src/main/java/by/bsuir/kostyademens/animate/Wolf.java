@@ -1,6 +1,7 @@
 package by.bsuir.kostyademens.animate;
 
 import by.bsuir.kostyademens.Coordinates;
+import by.bsuir.kostyademens.map.MapInterface;
 
 public class Wolf extends Creature {
     private int damagePoints;
@@ -19,7 +20,7 @@ public class Wolf extends Creature {
     }
 
     @Override
-    public void makeMove() {
+    public void makeMove(MapInterface map) {
 
     }
 

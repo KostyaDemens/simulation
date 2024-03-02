@@ -25,9 +25,9 @@ public class MapImpl implements MapInterface {
     }
 
     @Override
-    public void moveCreature(Coordinates from, Coordinates to, Creature creature) {
-        map.remove(from, creature);
+    public void makeMove(Coordinates from, Coordinates to, Creature creature) {
         addEntity(to, creature);
+        map.remove(from, creature);
     }
 
     public Entity findEntity(Class <? extends Entity> randomEntity) {

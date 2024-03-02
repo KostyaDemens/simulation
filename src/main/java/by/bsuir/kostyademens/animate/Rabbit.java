@@ -1,6 +1,11 @@
 package by.bsuir.kostyademens.animate;
 
 import by.bsuir.kostyademens.Coordinates;
+import by.bsuir.kostyademens.inanimate.Carrot;
+import by.bsuir.kostyademens.map.MapInterface;
+
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 public class Rabbit extends Creature {
 
@@ -20,8 +25,11 @@ public class Rabbit extends Creature {
     }
 
     @Override
-    public void makeMove() {
-
+    public void makeMove(MapInterface map) {
+        Queue<Coordinates> queue = new ArrayDeque<>(pathBuilder.buildPath(map, this.getCoordinates(), Carrot.class));
+        while (!queue.isEmpty()) {
+            map.makeMove(this.getCoordinates(), queue.poll(), this);
+        }
     }
 
     @Override

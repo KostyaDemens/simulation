@@ -2,11 +2,15 @@ package by.bsuir.kostyademens.animate;
 
 import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.Entity;
+import by.bsuir.kostyademens.map.MapInterface;
+import by.bsuir.kostyademens.pathfinder.PathBuilder;
 
 public abstract class Creature extends Entity {
+
+    protected PathBuilder pathBuilder = new PathBuilder();
     private Coordinates coordinates;
     private int speed;
-    public abstract void makeMove();
+    public abstract void makeMove(MapInterface map);
 
     public abstract void eat();
 

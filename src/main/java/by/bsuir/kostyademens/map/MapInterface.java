@@ -8,7 +8,7 @@ public interface MapInterface {
 
     void addEntity(Coordinates coordinates, Entity entity);
 
-    void moveCreature(Coordinates from, Coordinates to, Creature creature);
+    void makeMove(Coordinates from, Coordinates to, Creature creature);
 
     Entity getEntityFromCoordinates(Coordinates coordinates);
 
