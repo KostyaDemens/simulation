@@ -25,18 +25,25 @@ public class MapImpl implements MapInterface {
     }
 
     @Override
+    public void removeEntity(Coordinates coordinates) {
+        map.remove(coordinates);
+    }
+
+    @Override
     public void makeMove(Coordinates from, Coordinates to, Creature creature) {
         addEntity(to, creature);
         map.remove(from, creature);
     }
 
-    public Entity findEntity(Class <? extends Entity> randomEntity) {
+    @Override
+    public Entity findEntity(Class <? extends Entity> classToFind) {
         for (Map.Entry<Coordinates, Entity> entry : map.entrySet()) {
-            if (randomEntity.isInstance(entry.getValue())) {
+            if (classToFind.isInstance(entry.getValue())) {
                 return entry.getValue();
             }
         }
         return null;
+        // Немчинский налл
     }
 
 

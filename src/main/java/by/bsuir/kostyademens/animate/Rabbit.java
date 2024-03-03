@@ -27,14 +27,21 @@ public class Rabbit extends Creature {
     @Override
     public void makeMove(MapInterface map) {
         Queue<Coordinates> queue = new ArrayDeque<>(pathBuilder.buildPath(map, this.getCoordinates(), Carrot.class));
-        while (!queue.isEmpty()) {
+        queue.poll();
+
+
+        if (map.getEntityFromCoordinates(queue.peek()) instanceof Carrot) {
+            eat();
+            map.makeMove(this.getCoordinates(), queue.poll(), this);
+        } else {
+
             map.makeMove(this.getCoordinates(), queue.poll(), this);
         }
     }
 
     @Override
     public void eat() {
-
+        healPoints++;
     }
 
     @Override

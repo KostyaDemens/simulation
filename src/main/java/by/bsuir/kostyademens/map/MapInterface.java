@@ -10,6 +10,15 @@ public interface MapInterface {
 
     void makeMove(Coordinates from, Coordinates to, Creature creature);
 
+    void removeEntity(Coordinates coordinates);
+
     Entity getEntityFromCoordinates(Coordinates coordinates);
+
+    Entity findEntity(Class <? extends Entity> randomEntity);
+    boolean isCellEmpty(Coordinates coordinates);
+
+    int getMapWidth();
+
+    int getMapHeight();
 
 }

@@ -9,6 +9,6 @@ public class Rock extends Obstacle {
 
     @Override
     public String toString() {
-        return "\uD83D\uDDFF";
+        return "\uD83D\uDDFB";
     }
 }
