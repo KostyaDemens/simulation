@@ -11,7 +11,6 @@ public class Renderer {
                     System.out.print("\uD83D\uDFEB");
                 } else {
                 System.out.print(map.getEntityFromCoordinates(new Coordinates(i, j)));
-
                 }
             }
             System.out.println();

@@ -14,9 +14,9 @@ public class Game {
     private final Rabbit rabbit = new Rabbit(new Coordinates(1, 1));
 
 
-
     public Game(MapInterface map) {
         this.map = map;
+
         map.addEntity(new Coordinates(1, 1), rabbit);
     }
 
@@ -27,8 +27,8 @@ public class Game {
             rabbit.makeMove(map);
             System.out.println();
             sleep();
+            System.out.print("\033[H\033[J");
         }
-
     }
 
 
@@ -40,7 +40,7 @@ public class Game {
         }
     }
 
-    private boolean isObjectExists(Class <? extends Entity> classToFind) {
+    private boolean isObjectExists(Class<? extends Entity> classToFind) {
         return map.findEntity(classToFind) != null;
 
     }

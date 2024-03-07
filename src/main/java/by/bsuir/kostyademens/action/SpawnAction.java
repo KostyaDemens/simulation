@@ -2,14 +2,14 @@ package by.bsuir.kostyademens.action;
 
 import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.Entity;
-import by.bsuir.kostyademens.map.MapImpl;
+import by.bsuir.kostyademens.map.MapInterface;
 
 
 public abstract class SpawnAction <T extends Entity> extends Action {
 
     protected int spawnRate;
 
-    public SpawnAction(MapImpl map) {
+    public SpawnAction(MapInterface map) {
         super(map);
     }
 

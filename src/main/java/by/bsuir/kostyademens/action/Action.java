@@ -1,11 +1,11 @@
 package by.bsuir.kostyademens.action;
 
-import by.bsuir.kostyademens.map.MapImpl;
+import by.bsuir.kostyademens.map.MapInterface;
 
 public abstract class Action {
-    MapImpl map;
+    MapInterface map;
 
-    public Action(MapImpl map) {
+    public Action(MapInterface map) {
         this.map = map;
     }
 

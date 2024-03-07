@@ -4,13 +4,13 @@ package by.bsuir.kostyademens.action.spawnActions;
 import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.action.SpawnAction;
 import by.bsuir.kostyademens.inanimate.Carrot;
-import by.bsuir.kostyademens.map.MapImpl;
+import by.bsuir.kostyademens.map.MapInterface;
 
 
 public class SpawnCarrotAction extends SpawnAction<Carrot> {
 
 
-    public SpawnCarrotAction(MapImpl map) {
+    public SpawnCarrotAction(MapInterface map) {
         super(map);
         spawnRate = 3;
     }

@@ -12,6 +12,8 @@ public interface MapInterface {
 
     void removeEntity(Coordinates coordinates);
 
+    Coordinates getRandomCoordinates();
+
     Entity getEntityFromCoordinates(Coordinates coordinates);
 
     Entity findEntity(Class <? extends Entity> randomEntity);
