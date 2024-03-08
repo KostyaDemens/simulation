@@ -25,9 +25,7 @@ public class Game {
         while (isCarrotExists()) {
             renderer.render(map);
             rabbit.makeMove(map);
-            System.out.println();
             sleep();
-            System.out.print("\033[H\033[J");
         }
     }
 
