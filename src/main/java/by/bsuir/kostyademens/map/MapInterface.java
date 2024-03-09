@@ -24,6 +24,6 @@ public interface MapInterface {
     int getMapWidth();
 
     int getMapHeight();
-    List<? extends Entity> getListOfEntitiesOnTheMap(Class <? extends Entity> entities);
+    List<? extends Creature> getListOfCreaturesOnTheMap(Class<? extends Creature> creature);
 
 }

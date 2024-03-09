@@ -1,5 +1,6 @@
 package by.bsuir.kostyademens;
 
+import by.bsuir.kostyademens.animate.Creature;
 import by.bsuir.kostyademens.animate.Rabbit;
 import by.bsuir.kostyademens.animate.Wolf;
 import by.bsuir.kostyademens.inanimate.Carrot;
@@ -23,9 +24,9 @@ public class Game {
 
     public void start() {
         while (isCarrotExists()) {
-            List<Rabbit> rabbitList = (List<Rabbit>) map.getListOfEntitiesOnTheMap(Rabbit.class);
-            for (Rabbit rabbit : rabbitList) {
-                rabbit.makeMove(map);
+            List<Creature> rabbitList = (List<Creature>) map.getListOfCreaturesOnTheMap(Creature.class);
+            for (Creature creature : rabbitList) {
+                creature.makeMove(map);
             }
             renderer.render(map);
             System.out.println();

@@ -64,11 +64,11 @@ public class MapImpl implements MapInterface {
     }
 
     @Override
-    public List<? extends Entity> getListOfEntitiesOnTheMap(Class<? extends Entity> entities) {
-        List<Entity> entityList = new ArrayList<>();
+    public List<? extends Creature> getListOfCreaturesOnTheMap(Class<? extends Creature> creature) {
+        List<Creature> entityList = new ArrayList<>();
         for (Map.Entry<Coordinates, Entity> entry : map.entrySet()) {
-            if (entities.isInstance(entry.getValue())) {
-                entityList.add(entry.getValue());
+            if (creature.isInstance(entry.getValue())) {
+                entityList.add((Creature) entry.getValue());
             }
         }
         return entityList;
