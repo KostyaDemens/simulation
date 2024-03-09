@@ -11,8 +11,7 @@ public class MapFactory {
         SpawnCarrotAction carrot = new SpawnCarrotAction(map);
         SpawnRabbitAction rabbit = new SpawnRabbitAction(map);
         carrot.perform();
-//        map.addEntity(new Coordinates(5, 5), carrot);
-//        map.addEntity(new Coordinates(9, 9), carrot2);
+        rabbit.perform();
         return map;
     }
 }

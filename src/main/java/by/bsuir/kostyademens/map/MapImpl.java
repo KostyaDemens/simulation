@@ -4,7 +4,9 @@ import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.Entity;
 import by.bsuir.kostyademens.animate.Creature;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MapImpl implements MapInterface {
@@ -43,7 +45,6 @@ public class MapImpl implements MapInterface {
             }
         }
         return null;
-        // Немчинский налл
     }
 
 
@@ -62,6 +63,17 @@ public class MapImpl implements MapInterface {
         }
     }
 
+    @Override
+    public List<? extends Entity> getListOfEntitiesOnTheMap(Class<? extends Entity> entities) {
+        List<Entity> entityList = new ArrayList<>();
+        for (Map.Entry<Coordinates, Entity> entry : map.entrySet()) {
+            if (entities.isInstance(entry.getValue())) {
+                entityList.add(entry.getValue());
+            }
+        }
+        return entityList;
+    }
+
     public Entity getEntityFromCoordinates(Coordinates coordinates) {
         return map.get(coordinates);
     }
@@ -73,4 +85,6 @@ public class MapImpl implements MapInterface {
     public int getMapHeight() {
         return mapHeight;
     }
+
+
 }

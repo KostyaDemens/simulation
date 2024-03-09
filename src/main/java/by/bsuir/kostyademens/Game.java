@@ -5,26 +5,30 @@ import by.bsuir.kostyademens.animate.Wolf;
 import by.bsuir.kostyademens.inanimate.Carrot;
 import by.bsuir.kostyademens.map.MapInterface;
 
+import java.util.List;
+
+
 public class Game {
+
 
     private final MapInterface map;
 
     private final Renderer renderer = new Renderer();
 
-    private final Rabbit rabbit = new Rabbit(new Coordinates(1, 1));
-
-
     public Game(MapInterface map) {
         this.map = map;
-
-        map.addEntity(new Coordinates(1, 1), rabbit);
     }
+
 
 
     public void start() {
         while (isCarrotExists()) {
+            List<Rabbit> rabbitList = (List<Rabbit>) map.getListOfEntitiesOnTheMap(Rabbit.class);
+            for (Rabbit rabbit : rabbitList) {
+                rabbit.makeMove(map);
+            }
             renderer.render(map);
-            rabbit.makeMove(map);
+            System.out.println();
             sleep();
         }
     }
@@ -49,6 +53,10 @@ public class Game {
 
     private boolean isWolfExists() {
         return isObjectExists(Wolf.class);
+    }
+
+    private boolean isRabbitExists() {
+        return isObjectExists(Rabbit.class);
     }
 
 }

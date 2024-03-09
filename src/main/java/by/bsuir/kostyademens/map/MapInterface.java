@@ -4,6 +4,8 @@ import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.Entity;
 import by.bsuir.kostyademens.animate.Creature;
 
+import java.util.List;
+
 public interface MapInterface {
 
     void addEntity(Coordinates coordinates, Entity entity);
@@ -22,5 +24,6 @@ public interface MapInterface {
     int getMapWidth();
 
     int getMapHeight();
+    List<? extends Entity> getListOfEntitiesOnTheMap(Class <? extends Entity> entities);
 
 }
