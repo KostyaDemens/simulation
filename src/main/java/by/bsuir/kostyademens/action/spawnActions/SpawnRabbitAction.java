@@ -4,13 +4,13 @@ package by.bsuir.kostyademens.action.spawnActions;
 import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.action.SpawnAction;
 import by.bsuir.kostyademens.animate.Rabbit;
-import by.bsuir.kostyademens.map.MapInterface;
+import by.bsuir.kostyademens.map.MapImpl;
 
 
 public class SpawnRabbitAction extends SpawnAction<Rabbit> {
 
 
-    public SpawnRabbitAction(MapInterface map) {
+    public SpawnRabbitAction(MapImpl map) {
         super(map);
         spawnRate = 3;
     }

@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MapImpl implements MapInterface {
+public class MapImpl {
 
     private final int mapWidth = 10;
     private final int mapHeight = 10;
@@ -20,24 +20,20 @@ public class MapImpl implements MapInterface {
         return !map.containsKey(coordinates);
     }
 
-    @Override
     public void addEntity(Coordinates coordinates, Entity entity) {
         entity.setCoordinates(coordinates);
         map.put(coordinates, entity);
     }
 
-    @Override
     public void removeEntity(Coordinates coordinates) {
         map.remove(coordinates);
     }
 
-    @Override
     public void makeMove(Coordinates from, Coordinates to, Creature creature) {
         addEntity(to, creature);
         map.remove(from, creature);
     }
 
-    @Override
     public Entity findEntity(Class <? extends Entity> classToFind) {
         for (Map.Entry<Coordinates, Entity> entry : map.entrySet()) {
             if (classToFind.isInstance(entry.getValue())) {
@@ -63,7 +59,6 @@ public class MapImpl implements MapInterface {
         }
     }
 
-    @Override
     public List<? extends Creature> getListOfCreaturesOnTheMap(Class<? extends Creature> creature) {
         List<Creature> entityList = new ArrayList<>();
         for (Map.Entry<Coordinates, Entity> entry : map.entrySet()) {

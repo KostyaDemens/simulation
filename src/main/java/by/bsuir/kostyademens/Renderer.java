@@ -1,10 +1,10 @@
 package by.bsuir.kostyademens;
 
-import by.bsuir.kostyademens.map.MapInterface;
+import by.bsuir.kostyademens.map.MapImpl;
 
 public class Renderer {
 
-    public void render(MapInterface map) {
+    public void render(MapImpl map) {
         System.out.print("\033[H\033[J");
         for (int i = 1; i <= map.getMapWidth(); i++) {
             for (int j = 1; j <= map.getMapHeight(); j++) {

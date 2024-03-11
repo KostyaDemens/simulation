@@ -4,7 +4,7 @@ import by.bsuir.kostyademens.animate.Creature;
 import by.bsuir.kostyademens.animate.Rabbit;
 import by.bsuir.kostyademens.animate.Wolf;
 import by.bsuir.kostyademens.inanimate.Carrot;
-import by.bsuir.kostyademens.map.MapInterface;
+import by.bsuir.kostyademens.map.MapImpl;
 
 import java.util.List;
 
@@ -12,11 +12,11 @@ import java.util.List;
 public class Game {
 
 
-    private final MapInterface map;
+    private final MapImpl map;
 
     private final Renderer renderer = new Renderer();
 
-    public Game(MapInterface map) {
+    public Game(MapImpl map) {
         this.map = map;
     }
 

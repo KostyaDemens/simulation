@@ -1,8 +1,7 @@
 package by.bsuir.kostyademens;
 
 
-import by.bsuir.kostyademens.map.MapInterface;
-
+import by.bsuir.kostyademens.map.MapImpl;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,7 +9,7 @@ public class Main {
 
         MapFactory mapFactory = new MapFactory();
 
-        MapInterface map = mapFactory.get();
+        MapImpl map = mapFactory.get();
 
         Game game = new Game(map);
         game.start();

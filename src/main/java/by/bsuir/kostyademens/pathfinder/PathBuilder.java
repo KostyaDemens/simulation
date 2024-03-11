@@ -4,13 +4,13 @@ import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.Entity;
 import by.bsuir.kostyademens.animate.Rabbit;
 import by.bsuir.kostyademens.inanimate.Obstacle;
-import by.bsuir.kostyademens.map.MapInterface;
+import by.bsuir.kostyademens.map.MapImpl;
 
 import java.util.*;
 
 public class PathBuilder {
 
-    public List<Coordinates> buildPath(MapInterface map, Coordinates from, Class<? extends Entity> entity) {
+    public List<Coordinates> buildPath(MapImpl map, Coordinates from, Class<? extends Entity> entity) {
         Set<Coordinates> visited = new HashSet<>();
         Queue<Coordinates> queue = new ArrayDeque<>();
         Map<Coordinates, Coordinates> parentMap = new HashMap<>(); // Карта для отслеживания родительских координат
