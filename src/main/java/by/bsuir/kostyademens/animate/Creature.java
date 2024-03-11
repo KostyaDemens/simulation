@@ -8,6 +8,8 @@ import by.bsuir.kostyademens.pathfinder.PathBuilder;
 public abstract class Creature extends Entity {
 
     protected PathBuilder pathBuilder = new PathBuilder();
+
+    protected int healPoints;
     private Coordinates coordinates;
     private int speed;
     public abstract void makeMove(MapInterface map);

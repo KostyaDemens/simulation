@@ -12,7 +12,7 @@ public class SpawnWolfAction extends SpawnAction<Wolf> {
 
     public SpawnWolfAction(MapInterface map) {
         super(map);
-        spawnRate = 3;
+        spawnRate = 10;
     }
 
 

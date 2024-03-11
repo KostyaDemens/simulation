@@ -12,6 +12,7 @@ public class Wolf extends Creature {
     public Wolf(Coordinates coordinates) {
         super(coordinates, 1);
         this.damagePoints = 2;
+        this.healPoints = 4;
     }
 
     public int getDamagePoints() {

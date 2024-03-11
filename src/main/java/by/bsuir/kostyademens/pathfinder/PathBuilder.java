@@ -2,13 +2,13 @@ package by.bsuir.kostyademens.pathfinder;
 
 import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.Entity;
+import by.bsuir.kostyademens.animate.Rabbit;
 import by.bsuir.kostyademens.inanimate.Obstacle;
 import by.bsuir.kostyademens.map.MapInterface;
 
 import java.util.*;
 
 public class PathBuilder {
-
 
     public List<Coordinates> buildPath(MapInterface map, Coordinates from, Class<? extends Entity> entity) {
         Set<Coordinates> visited = new HashSet<>();
@@ -33,7 +33,8 @@ public class PathBuilder {
             }
 
             for (Coordinates neighbor : getListOfNeighbours(current)) {
-                if (!visited.contains(neighbor) && !(map.getEntityFromCoordinates(neighbor) instanceof Obstacle)) {
+                if (!visited.contains(neighbor) && !(map.getEntityFromCoordinates(neighbor) instanceof Obstacle)
+                    && !(map.getEntityFromCoordinates(neighbor) instanceof Rabbit)) {
                     visited.add(neighbor);
                     queue.add(neighbor);
                     parentMap.put(neighbor, current);

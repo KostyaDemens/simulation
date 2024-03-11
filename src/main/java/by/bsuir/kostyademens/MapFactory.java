@@ -13,7 +13,7 @@ public class MapFactory {
         SpawnRabbitAction rabbit = new SpawnRabbitAction(map);
         SpawnWolfAction wolf = new SpawnWolfAction(map);
         wolf.perform();
-        carrot.perform();
+//        carrot.perform();
         rabbit.perform();
         return map;
     }

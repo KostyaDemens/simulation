@@ -23,12 +23,12 @@ public class Game {
 
 
     public void start() {
-        while (isCarrotExists()) {
+        while (isRabbitExists()) {
+            renderer.render(map);
             List<Creature> rabbitList = (List<Creature>) map.getListOfCreaturesOnTheMap(Creature.class);
             for (Creature creature : rabbitList) {
                 creature.makeMove(map);
             }
-            renderer.render(map);
             System.out.println();
             sleep();
         }

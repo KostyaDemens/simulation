@@ -9,7 +9,6 @@ import java.util.Queue;
 
 public class Rabbit extends Creature {
 
-    private int healPoints;
 
     public Rabbit(Coordinates coordinates) {
         super(coordinates, 2);
