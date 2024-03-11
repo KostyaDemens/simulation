@@ -32,7 +32,7 @@ public class PathBuilder {
                 return path;
             }
 
-            for (Coordinates neighbor : getListOfNeighbours(current)) {
+            for (Coordinates neighbor : getListOfNeighbours(current, map)) {
                 if (!visited.contains(neighbor) && !(map.getEntityFromCoordinates(neighbor) instanceof Obstacle)
                     && !(map.getEntityFromCoordinates(neighbor) instanceof Rabbit)) {
                     visited.add(neighbor);
@@ -45,13 +45,13 @@ public class PathBuilder {
     }
 
 
-    private List<Coordinates> getListOfNeighbours(Coordinates coordinates) {
+    public List<Coordinates> getListOfNeighbours(Coordinates coordinates, MapImpl map) {
         int x = coordinates.getX();
         int y = coordinates.getY();
         Coordinates[] arrayOfNeighbours = new Coordinates[]{new Coordinates(x, y - 1), new Coordinates(x, y + 1), new Coordinates(x + 1, y), new Coordinates(x - 1, y)};
         List<Coordinates> listOfNeighbours = new ArrayList<>();
         for (Coordinates coordinate : arrayOfNeighbours) {
-            if (coordinate.getX() >= 1 && coordinate.getY() >= 1 && coordinate.getX() <= 10 && coordinate.getY() <= 10) {
+            if (coordinate.getX() >= 1 && coordinate.getY() >= 1 && coordinate.getX() <= map.getMapWidth() && coordinate.getY() <= map.getMapWidth()) {
                 listOfNeighbours.add(coordinate);
             }
         }
