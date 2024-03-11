@@ -8,8 +8,4 @@ public class Carrot extends Entity {
         super(coordinates);
     }
 
-    @Override
-    public String toString() {
-        return "\uD83E\uDD55";
-    }
 }

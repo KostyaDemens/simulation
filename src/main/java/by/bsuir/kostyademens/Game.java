@@ -23,7 +23,7 @@ public class Game {
 
 
     public void start() {
-        while (isRabbitExists()) {
+        while (true) {
             renderer.render(map);
             List<Creature> rabbitList = (List<Creature>) map.getListOfCreaturesOnTheMap(Creature.class);
             for (Creature creature : rabbitList) {

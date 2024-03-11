@@ -43,8 +43,4 @@ public class Rabbit extends Creature {
         healPoints++;
     }
 
-    @Override
-    public String toString() {
-        return "\uD83D\uDC07";
-    }
 }

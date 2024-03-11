@@ -7,8 +7,4 @@ public class Tree extends Obstacle {
         super(coordinates);
     }
 
-    @Override
-    public String toString() {
-        return "\uD83C\uDF33";
-    }
 }

@@ -7,8 +7,4 @@ public class Rock extends Obstacle {
         super(coordinates);
     }
 
-    @Override
-    public String toString() {
-        return "\uD83D\uDDFB";
-    }
 }

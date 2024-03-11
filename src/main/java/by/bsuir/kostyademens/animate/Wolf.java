@@ -42,8 +42,4 @@ public class Wolf extends Creature {
 
     }
 
-    @Override
-    public String toString() {
-        return "\uD83D\uDC3A";
-    }
 }

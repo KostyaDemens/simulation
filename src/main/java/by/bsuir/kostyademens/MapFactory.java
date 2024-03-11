@@ -10,9 +10,9 @@ public class MapFactory {
         MapImpl map = new MapImpl();
         SpawnCarrotAction carrot = new SpawnCarrotAction(map);
         SpawnRabbitAction rabbit = new SpawnRabbitAction(map);
-        SpawnWolfAction wolf = new SpawnWolfAction(map);
-        wolf.perform();
-//        carrot.perform();
+//        SpawnWolfAction wolf = new SpawnWolfAction(map);
+//        wolf.perform();
+        carrot.perform();
         rabbit.perform();
         return map;
     }
