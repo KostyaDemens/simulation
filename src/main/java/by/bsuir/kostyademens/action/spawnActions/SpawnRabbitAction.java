@@ -20,6 +20,6 @@ public class SpawnRabbitAction extends SpawnAction<Rabbit> {
 
     @Override
     public Rabbit spawnEntity(Coordinates coordinates) {
-        return new Rabbit(coordinates);
+        return new Rabbit(coordinates, 2);
     }
 }

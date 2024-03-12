@@ -9,16 +9,16 @@ public abstract class Creature extends Entity {
 
     protected PathBuilder pathBuilder = new PathBuilder();
 
+    protected int damagePoints;
     protected int healPoints;
     private Coordinates coordinates;
-    private int speed;
+    protected int speed;
     public abstract void makeMove(MapImpl map);
 
     public abstract void eat();
 
-    public Creature(Coordinates coordinates, int speed) {
+    public Creature(Coordinates coordinates) {
         super(coordinates);
-        this.speed = speed;
     }
 
     public Coordinates getCoordinates() {

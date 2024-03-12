@@ -9,10 +9,10 @@ import java.util.Queue;
 public class Wolf extends Creature {
     private int damagePoints;
 
-    public Wolf(Coordinates coordinates) {
-        super(coordinates, 1);
-        this.damagePoints = 2;
-        this.healPoints = 4;
+    public Wolf(Coordinates coordinates, int damagePoints, int healPoints) {
+        super(coordinates);
+        this.damagePoints = damagePoints;
+        this.healPoints = healPoints;
     }
 
     public int getDamagePoints() {

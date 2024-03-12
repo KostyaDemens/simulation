@@ -11,9 +11,9 @@ import java.util.Random;
 public class Rabbit extends Creature {
 
 
-    public Rabbit(Coordinates coordinates) {
-        super(coordinates, 2);
-        this.healPoints = 5;
+    public Rabbit(Coordinates coordinates, int healPoints) {
+        super(coordinates);
+        this.healPoints = healPoints;
     }
 
     public int getHealPoints() {
