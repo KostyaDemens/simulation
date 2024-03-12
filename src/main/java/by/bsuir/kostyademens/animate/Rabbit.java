@@ -29,7 +29,6 @@ public class Rabbit extends Creature {
         if (map.findEntity(Carrot.class) == null) {
             Random random = new Random();
             int randomIndex = random.nextInt(pathBuilder.getListOfNeighbours(this.getCoordinates(), map).size());
-            System.out.println(randomIndex);
             map.makeMove(this.getCoordinates(), (pathBuilder.getListOfNeighbours(this.getCoordinates(), map).get(randomIndex)), this);
         } else {
 

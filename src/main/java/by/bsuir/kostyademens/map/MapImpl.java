@@ -11,8 +11,13 @@ import java.util.Map;
 
 public class MapImpl {
 
-    private final int mapWidth = 4;
-    private final int mapHeight = 4;
+    private final int mapWidth;
+    private final int mapHeight;
+
+    public MapImpl (int mapWidth, int mapHeight) {
+        this.mapWidth = mapWidth;
+        this.mapHeight = mapHeight;
+    }
 
     HashMap<Coordinates, Entity> map = new HashMap<>();
 

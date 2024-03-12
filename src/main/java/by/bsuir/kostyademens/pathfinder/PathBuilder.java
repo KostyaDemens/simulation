@@ -51,7 +51,7 @@ public class PathBuilder {
         Coordinates[] arrayOfNeighbours = new Coordinates[]{new Coordinates(x, y - 1), new Coordinates(x, y + 1), new Coordinates(x + 1, y), new Coordinates(x - 1, y)};
         List<Coordinates> listOfNeighbours = new ArrayList<>();
         for (Coordinates coordinate : arrayOfNeighbours) {
-            if (coordinate.getX() >= 1 && coordinate.getY() >= 1 && coordinate.getX() <= map.getMapWidth() && coordinate.getY() <= map.getMapWidth()) {
+            if (coordinate.getX() >= 1 && coordinate.getY() >= 1 && coordinate.getX() <= map.getMapWidth() && coordinate.getY() <= map.getMapHeight()) {
                 listOfNeighbours.add(coordinate);
             }
         }
