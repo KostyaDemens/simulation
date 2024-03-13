@@ -5,6 +5,8 @@ import by.bsuir.kostyademens.Entity;
 import by.bsuir.kostyademens.map.MapImpl;
 import by.bsuir.kostyademens.pathfinder.PathBuilder;
 
+import java.util.Random;
+
 public abstract class Creature extends Entity {
 
     protected PathBuilder pathBuilder = new PathBuilder();
@@ -16,6 +18,12 @@ public abstract class Creature extends Entity {
     public abstract void makeMove(MapImpl map);
 
     public abstract void eat();
+
+    protected void roamAround(MapImpl map) {
+        Random random = new Random();
+        int randomIndex = random.nextInt(pathBuilder.getListOfNeighbours(this.getCoordinates(), map).size());
+        map.makeMove(this.getCoordinates(), (pathBuilder.getListOfNeighbours(this.getCoordinates(), map).get(randomIndex)), this);
+    }
 
     public Creature(Coordinates coordinates) {
         super(coordinates);

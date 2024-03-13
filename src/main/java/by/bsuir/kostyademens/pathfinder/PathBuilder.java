@@ -29,6 +29,7 @@ public class PathBuilder {
                     backtrack = parentMap.get(backtrack);
                 }
                 Collections.reverse(path);
+                path.remove(0); //remove start entity coordinate
                 return path;
             }
 

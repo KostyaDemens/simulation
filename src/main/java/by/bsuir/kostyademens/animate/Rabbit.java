@@ -4,9 +4,7 @@ import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.inanimate.Carrot;
 import by.bsuir.kostyademens.map.MapImpl;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
-import java.util.Random;
+import java.util.List;
 
 public class Rabbit extends Creature {
 
@@ -27,31 +25,28 @@ public class Rabbit extends Creature {
     @Override
     public void makeMove(MapImpl map) {
         if (map.findEntity(Carrot.class) == null) {
-            Random random = new Random();
-            int randomIndex = random.nextInt(pathBuilder.getListOfNeighbours(this.getCoordinates(), map).size());
-            map.makeMove(this.getCoordinates(), (pathBuilder.getListOfNeighbours(this.getCoordinates(), map).get(randomIndex)), this);
+            roamAround(map);
         } else {
 
-            Queue<Coordinates> queue = new ArrayDeque<>(pathBuilder.buildPath(map, this.getCoordinates(), Carrot.class));
+            List<Coordinates> path = pathBuilder.buildPath(map, this.getCoordinates(), Carrot.class);
 
-
-            queue.poll();
-
-            if (map.getEntityFromCoordinates(queue.peek()) instanceof Carrot) {
-                eat();
-                map.makeMove(this.getCoordinates(), queue.poll(), this);
-            } else {
-
-                map.makeMove(this.getCoordinates(), queue.poll(), this);
+            for (Coordinates coordinates : path) {
+                if (map.getEntityFromCoordinates(coordinates) instanceof Carrot) {
+                    eat();
+                    map.makeMove(this.getCoordinates(), coordinates, this);
+                } else {
+                    map.makeMove(this.getCoordinates(), coordinates, this);
+                    break;
+                }
             }
         }
-
-
     }
+
 
     @Override
     public void eat() {
         healPoints++;
     }
-
 }
+
+

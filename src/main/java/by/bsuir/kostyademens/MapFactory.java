@@ -6,7 +6,7 @@ import by.bsuir.kostyademens.map.MapImpl;
 
 public class MapFactory {
     public MapImpl get() {
-        MapImpl map = new MapImpl(3, 2);
+        MapImpl map = new MapImpl(5, 5);
         SpawnCarrotAction carrot = new SpawnCarrotAction(map);
         SpawnRabbitAction rabbit = new SpawnRabbitAction(map);
 //        SpawnWolfAction wolf = new SpawnWolfAction(map);
