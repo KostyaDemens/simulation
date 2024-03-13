@@ -4,6 +4,7 @@ package by.bsuir.kostyademens.action.spawnActions;
 import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.action.SpawnAction;
 import by.bsuir.kostyademens.animate.Rabbit;
+import by.bsuir.kostyademens.factory.EntityFactory;
 import by.bsuir.kostyademens.map.MapImpl;
 
 
@@ -20,6 +21,6 @@ public class SpawnRabbitAction extends SpawnAction<Rabbit> {
 
     @Override
     public Rabbit spawnEntity(Coordinates coordinates) {
-        return new Rabbit(coordinates, 2);
+        return EntityFactory.createRabbit(coordinates);
     }
 }
