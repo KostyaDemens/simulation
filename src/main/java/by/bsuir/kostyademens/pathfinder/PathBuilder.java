@@ -2,7 +2,6 @@ package by.bsuir.kostyademens.pathfinder;
 
 import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.Entity;
-import by.bsuir.kostyademens.animate.Rabbit;
 import by.bsuir.kostyademens.inanimate.Obstacle;
 import by.bsuir.kostyademens.map.MapImpl;
 
@@ -34,8 +33,7 @@ public class PathBuilder {
             }
 
             for (Coordinates neighbor : getListOfNeighbours(current, map)) {
-                if (!visited.contains(neighbor) && !(map.getEntityFromCoordinates(neighbor) instanceof Obstacle)
-                    && !(map.getEntityFromCoordinates(neighbor) instanceof Rabbit)) {
+                if (!visited.contains(neighbor)) {
                     visited.add(neighbor);
                     queue.add(neighbor);
                     parentMap.put(neighbor, current);
@@ -49,10 +47,17 @@ public class PathBuilder {
     public List<Coordinates> getListOfNeighbours(Coordinates coordinates, MapImpl map) {
         int x = coordinates.getX();
         int y = coordinates.getY();
-        Coordinates[] arrayOfNeighbours = new Coordinates[]{new Coordinates(x, y - 1), new Coordinates(x, y + 1), new Coordinates(x + 1, y), new Coordinates(x - 1, y)};
+        Coordinates[] arrayOfNeighbours = new Coordinates[]{
+                new Coordinates(x, y - 1),
+                new Coordinates(x, y + 1),
+                new Coordinates(x + 1, y),
+                new Coordinates(x - 1, y)
+        };
         List<Coordinates> listOfNeighbours = new ArrayList<>();
         for (Coordinates coordinate : arrayOfNeighbours) {
-            if (coordinate.getX() >= 1 && coordinate.getY() >= 1 && coordinate.getX() <= map.getMapWidth() && coordinate.getY() <= map.getMapHeight()) {
+            if (coordinate.getX() >= 1 && coordinate.getY() >= 1
+                    && coordinate.getX() <= map.getMapWidth() && coordinate.getY() <= map.getMapHeight()
+                    && !(map.getEntityFromCoordinates(new Coordinates(coordinate.getX(), coordinate.getY())) instanceof Obstacle)) {
                 listOfNeighbours.add(coordinate);
             }
         }

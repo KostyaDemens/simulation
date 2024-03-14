@@ -3,8 +3,7 @@ package by.bsuir.kostyademens.animate;
 import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.map.MapImpl;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
+import java.util.List;
 
 public class Wolf extends Creature {
     private int damagePoints;
@@ -24,16 +23,21 @@ public class Wolf extends Creature {
     }
 
     public void makeMove(MapImpl map) {
-        Queue<Coordinates> queue = new ArrayDeque<>(pathBuilder.buildPath(map, this.getCoordinates(), Rabbit.class));
-        queue.poll();
-
-
-        if (map.getEntityFromCoordinates(queue.peek()) instanceof Rabbit) {
-            eat();
-            map.makeMove(this.getCoordinates(), queue.poll(), this);
+        if (map.findEntity(Rabbit.class) == null) {
+            roamAround(map);
         } else {
 
-            map.makeMove(this.getCoordinates(), queue.poll(), this);
+            List<Coordinates> path = pathBuilder.buildPath(map, this.getCoordinates(), Rabbit.class);
+
+            for (Coordinates coordinates : path) {
+                if (map.getEntityFromCoordinates(coordinates) instanceof Rabbit) {
+                    eat();
+                    map.makeMove(this.getCoordinates(), coordinates, this);
+                } else {
+                    map.makeMove(this.getCoordinates(), coordinates, this);
+                    break;
+                }
+            }
         }
     }
 
