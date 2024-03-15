@@ -2,6 +2,7 @@ package by.bsuir.kostyademens.pathfinder;
 
 import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.Entity;
+import by.bsuir.kostyademens.animate.Rabbit;
 import by.bsuir.kostyademens.inanimate.Obstacle;
 import by.bsuir.kostyademens.map.MapImpl;
 
@@ -57,13 +58,13 @@ public class PathBuilder {
         for (Coordinates coordinate : arrayOfNeighbours) {
             if (coordinate.getX() >= 1 && coordinate.getY() >= 1
                     && coordinate.getX() <= map.getMapWidth() && coordinate.getY() <= map.getMapHeight()
-                    && !(map.getEntityFromCoordinates(new Coordinates(coordinate.getY(), coordinate.getX())) instanceof Obstacle)) {
+                    && !(map.getEntityFromCoordinates(coordinate) instanceof Rabbit)
+                    && !(map.getEntityFromCoordinates(coordinate) instanceof Obstacle)) {
                 listOfNeighbours.add(coordinate);
             }
         }
         return listOfNeighbours;
     }
-
 
 }
 

@@ -28,17 +28,23 @@ public class Rabbit extends Creature {
             roamAround(map);
         } else {
 
-            List<Coordinates> path = pathBuilder.buildPath(map, this.getCoordinates(), Carrot.class);
 
-            for (Coordinates coordinates : path) {
-                if (map.getEntityFromCoordinates(coordinates) instanceof Carrot) {
-                    eat();
-                    map.makeMove(this.getCoordinates(), coordinates, this);
+                List<Coordinates> path = pathBuilder.buildPath(map, this.getCoordinates(), Carrot.class);
+                if (path == null) {
+                    roamAround(map);
                 } else {
-                    map.makeMove(this.getCoordinates(), coordinates, this);
-                    break;
+
+                for (Coordinates coordinates : path) {
+
+                    if (map.getEntityFromCoordinates(coordinates) instanceof Carrot) {
+                        eat();
+                        map.makeMove(this.getCoordinates(), coordinates, this);
+                    } else {
+                        map.makeMove(this.getCoordinates(), coordinates, this);
+                        break;
+                    }
                 }
-            }
+                }
         }
     }
 
@@ -47,6 +53,7 @@ public class Rabbit extends Creature {
     public void eat() {
         healPoints++;
     }
+
 }
 
 

@@ -15,14 +15,19 @@ public abstract class Creature extends Entity {
     protected int healPoints;
     private Coordinates coordinates;
     protected int speed;
+
     public abstract void makeMove(MapImpl map);
 
     public abstract void eat();
 
     protected void roamAround(MapImpl map) {
+
+
         Random random = new Random();
-        int randomIndex = random.nextInt(pathBuilder.getListOfNeighbours(this.getCoordinates(), map).size());
-        map.makeMove(this.getCoordinates(), (pathBuilder.getListOfNeighbours(this.getCoordinates(), map).get(randomIndex)), this);
+        if (!pathBuilder.getListOfNeighbours(this.getCoordinates(), map).isEmpty()) {
+            int randomIndex = random.nextInt(pathBuilder.getListOfNeighbours(this.getCoordinates(), map).size());
+            map.makeMove(this.getCoordinates(), (pathBuilder.getListOfNeighbours(this.getCoordinates(), map).get(randomIndex)), this);
+        }
     }
 
     public Creature(Coordinates coordinates) {
