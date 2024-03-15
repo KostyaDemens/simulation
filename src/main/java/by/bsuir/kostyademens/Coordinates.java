@@ -6,9 +6,9 @@ public class Coordinates {
     private int x;
     private int y;
 
-    public Coordinates(int x, int y) {
-        this.x = x;
+    public Coordinates(int y, int x) {
         this.y = y;
+        this.x = x;
     }
 
     public int getX() {

@@ -48,16 +48,16 @@ public class PathBuilder {
         int x = coordinates.getX();
         int y = coordinates.getY();
         Coordinates[] arrayOfNeighbours = new Coordinates[]{
-                new Coordinates(x, y - 1),
-                new Coordinates(x, y + 1),
-                new Coordinates(x + 1, y),
-                new Coordinates(x - 1, y)
+                new Coordinates(y - 1, x),
+                new Coordinates(y + 1, x),
+                new Coordinates(y, x + 1),
+                new Coordinates(y, x - 1)
         };
         List<Coordinates> listOfNeighbours = new ArrayList<>();
         for (Coordinates coordinate : arrayOfNeighbours) {
             if (coordinate.getX() >= 1 && coordinate.getY() >= 1
                     && coordinate.getX() <= map.getMapWidth() && coordinate.getY() <= map.getMapHeight()
-                    && !(map.getEntityFromCoordinates(new Coordinates(coordinate.getX(), coordinate.getY())) instanceof Obstacle)) {
+                    && !(map.getEntityFromCoordinates(new Coordinates(coordinate.getY(), coordinate.getX())) instanceof Obstacle)) {
                 listOfNeighbours.add(coordinate);
             }
         }

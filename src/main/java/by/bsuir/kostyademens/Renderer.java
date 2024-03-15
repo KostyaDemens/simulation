@@ -1,14 +1,13 @@
 package by.bsuir.kostyademens;
 
-import by.bsuir.kostyademens.animate.Rabbit;
 import by.bsuir.kostyademens.map.MapImpl;
 
 public class Renderer {
 
     public void render(MapImpl map) {
         System.out.print("\033[H\033[J");
-        for (int i = 1; i <= map.getMapWidth(); i++) {
-            for (int j = 1; j <= map.getMapHeight(); j++) {
+        for (int i = 1; i <= map.getMapHeight(); i++) {
+            for (int j = 1; j <= map.getMapWidth(); j++) {
                 if (map.isCellEmpty(new Coordinates(i, j))) {
                     System.out.print("\uD83D\uDFEB");
                 } else {
