@@ -75,7 +75,8 @@ public class MapImpl {
     }
 
     public Entity getEntityFromCoordinates(Coordinates coordinates) {
-        return map.get(coordinates);
+            return map.get(coordinates);
+
     }
 
     public int getMapWidth() {

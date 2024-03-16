@@ -9,9 +9,10 @@ import java.util.List;
 public class Rabbit extends Creature {
 
 
-    public Rabbit(Coordinates coordinates, int healPoints) {
+    public Rabbit(Coordinates coordinates, int healPoints, int speed) {
         super(coordinates);
         this.healPoints = healPoints;
+        this.speed = speed;
     }
 
     public int getHealPoints() {
@@ -24,9 +25,12 @@ public class Rabbit extends Creature {
 
     @Override
     public void makeMove(MapImpl map) {
-        if (map.findEntity(Carrot.class) == null) {
-            roamAround(map);
-        } else {
+
+        for (int i = 0; i <= this.speed; i++) {
+
+            if (map.findEntity(Carrot.class) == null) {
+                roamAround(map);
+            } else {
 
 
                 List<Coordinates> path = pathBuilder.buildPath(map, this.getCoordinates(), Carrot.class);
@@ -34,17 +38,20 @@ public class Rabbit extends Creature {
                     roamAround(map);
                 } else {
 
-                for (Coordinates coordinates : path) {
 
-                    if (map.getEntityFromCoordinates(coordinates) instanceof Carrot) {
-                        eat();
-                        map.makeMove(this.getCoordinates(), coordinates, this);
-                    } else {
-                        map.makeMove(this.getCoordinates(), coordinates, this);
-                        break;
+                    for (Coordinates coordinates : path) {
+
+                        if (map.getEntityFromCoordinates(coordinates) instanceof Carrot) {
+                            eat();
+                            map.makeMove(this.getCoordinates(), coordinates, this);
+                        } else {
+                            map.makeMove(this.getCoordinates(), coordinates, this);
+                            break;
+                        }
                     }
                 }
-                }
+            }
+            i++;
         }
     }
 
