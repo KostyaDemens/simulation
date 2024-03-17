@@ -64,11 +64,12 @@ public class MapImpl {
         }
     }
 
-    public List<? extends Creature> getListOfCreaturesOnTheMap(Class<? extends Creature> creature) {
+    public List<Creature> getListOfCreaturesOnTheMap() {
         List<Creature> entityList = new ArrayList<>();
         for (Map.Entry<Coordinates, Entity> entry : map.entrySet()) {
-            if (creature.isInstance(entry.getValue())) {
-                entityList.add((Creature) entry.getValue());
+            Entity entity = entry.getValue();
+            if (entity instanceof Creature) {
+                entityList.add((Creature) entity);
             }
         }
         return entityList;

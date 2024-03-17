@@ -26,32 +26,20 @@ public class Rabbit extends Creature {
     @Override
     public void makeMove(MapImpl map) {
 
-        for (int i = 0; i <= this.speed; i++) {
+        for (int i = 0; i < speed; i++) {
 
-            if (map.findEntity(Carrot.class) == null) {
+            List<Coordinates> path = pathBuilder.buildPath(map, getCoordinates(), Carrot.class);
+            if (path == null) {
                 roamAround(map);
             } else {
-
-
-                List<Coordinates> path = pathBuilder.buildPath(map, this.getCoordinates(), Carrot.class);
-                if (path == null) {
-                    roamAround(map);
-                } else {
-
-
-                    for (Coordinates coordinates : path) {
-
-                        if (map.getEntityFromCoordinates(coordinates) instanceof Carrot) {
-                            eat();
-                            map.makeMove(this.getCoordinates(), coordinates, this);
-                        } else {
-                            map.makeMove(this.getCoordinates(), coordinates, this);
-                            break;
-                        }
+                for (int j = i; j < speed; j++) {
+                    Coordinates coordinates = path.get(j);
+                    if (j == path.size() - 1) {
+                        eat();
                     }
+                    map.makeMove(this.getCoordinates(), coordinates, this);
                 }
             }
-            i++;
         }
     }
 

@@ -25,8 +25,8 @@ public class Game {
     public void start() {
         while (true) {
             renderer.render(map);
-            List<Creature> rabbitList = (List<Creature>) map.getListOfCreaturesOnTheMap(Creature.class);
-            for (Creature creature : rabbitList) {
+            List<Creature> creatures = map.getListOfCreaturesOnTheMap();
+            for (Creature creature : creatures) {
                 creature.makeMove(map);
             }
             System.out.println();

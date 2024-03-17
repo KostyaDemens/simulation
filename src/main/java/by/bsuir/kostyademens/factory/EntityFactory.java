@@ -11,6 +11,6 @@ public class EntityFactory {
     }
 
     public static Wolf createWolf(Coordinates coordinates) {
-        return new Wolf(coordinates, 3, 4);
+        return new Wolf(coordinates, 3, 4, 1);
     }
 }
