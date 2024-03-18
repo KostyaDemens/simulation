@@ -1,7 +1,6 @@
 package by.bsuir.kostyademens.animate;
 
 import by.bsuir.kostyademens.Coordinates;
-import by.bsuir.kostyademens.inanimate.Carrot;
 import by.bsuir.kostyademens.map.MapImpl;
 
 import java.util.List;
@@ -10,10 +9,8 @@ public class Wolf extends Creature {
     private int damagePoints;
 
     public Wolf(Coordinates coordinates, int damagePoints, int healPoints, int speed) {
-        super(coordinates);
+        super(coordinates, healPoints, speed);
         this.damagePoints = damagePoints;
-        this.healPoints = healPoints;
-        this.speed = speed;
     }
 
     public int getDamagePoints() {

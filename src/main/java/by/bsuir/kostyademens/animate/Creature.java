@@ -5,14 +5,11 @@ import by.bsuir.kostyademens.Entity;
 import by.bsuir.kostyademens.map.MapImpl;
 import by.bsuir.kostyademens.pathfinder.PathBuilder;
 
-import java.util.List;
-import java.util.Random;
 
 public abstract class Creature extends Entity {
 
     protected PathBuilder pathBuilder = new PathBuilder();
 
-    protected int damagePoints;
     protected int healPoints;
     private Coordinates coordinates;
     protected int speed;
@@ -25,8 +22,10 @@ public abstract class Creature extends Entity {
         map.makeMove(coordinates, pathBuilder.getRandomNeighborFiltered(map, coordinates), this);
     }
 
-    public Creature(Coordinates coordinates) {
+    public Creature(Coordinates coordinates, int healPoints, int speed) {
         super(coordinates);
+        this.healPoints = healPoints;
+        this.speed = speed;
     }
 
     public Coordinates getCoordinates() {

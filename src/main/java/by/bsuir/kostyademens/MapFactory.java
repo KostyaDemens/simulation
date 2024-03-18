@@ -11,10 +11,12 @@ import by.bsuir.kostyademens.inanimate.Carrot;
 import by.bsuir.kostyademens.inanimate.Rock;
 import by.bsuir.kostyademens.map.MapImpl;
 
+
 public class MapFactory {
     public MapImpl get() {
-        return wolfAndRabbitTest();
+//        return wolfAndRabbitTest();
 //        return rabbitCollapseTest();
+        return rabbitAndCarrotTest();
     }
 
     public MapImpl rabbitCollapseTest() {
@@ -36,8 +38,20 @@ public class MapFactory {
 
     private MapImpl wolfAndRabbitTest() {
         MapImpl map = new MapImpl(3, 3);
+
         map.addEntity(new Coordinates(3, 3), new Rabbit(new Coordinates(3, 3), 2, 1));
+
         map.addEntity(new Coordinates(1, 1), new Wolf(new Coordinates(1, 1), 1, 8, 1));
+        return map;
+    }
+
+    private MapImpl rabbitAndCarrotTest() {
+        MapImpl map = new MapImpl(5, 5);
+
+        map.addEntity(new Coordinates(1, 1), new Rabbit(new Coordinates(1, 1), 1, 3));
+
+        map.addEntity(new Coordinates(5, 5), new Carrot(new Coordinates(5, 5)));
+
         return map;
     }
 
