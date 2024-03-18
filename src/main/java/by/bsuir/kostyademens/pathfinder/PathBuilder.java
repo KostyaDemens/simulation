@@ -25,15 +25,16 @@ public class PathBuilder {
             if (!current.equals(from)) {
                 if (targetEntityClass.isInstance(entity)) {
                     // TODO: вынести backtracking в отдельный метод + попробуй использовать стек
-                    List<Coordinates> path = new ArrayList<>();
-                    Coordinates backtrack = entity.getCoordinates();
-                    while (backtrack != null) {
-                        path.add(backtrack);
-                        backtrack = parentMap.get(backtrack);
-                    }
-                    Collections.reverse(path);
-                    path.remove(0); //remove start entity coordinate
-                    return path;
+//                    List<Coordinates> path = new ArrayList<>();
+//                    Coordinates backtrack = entity.getCoordinates();
+//                    while (backtrack != null) {
+//                        path.add(backtrack);
+//                        backtrack = parentMap.get(backtrack);
+//                    }
+//                    Collections.reverse(path);
+//                    path.remove(0); //remove start entity coordinate
+//                    return path;
+                    return makeBacktrack(parentMap, entity);
                 }
 
                 if (entity instanceof Obstacle || entity instanceof Creature) {
@@ -83,8 +84,28 @@ public class PathBuilder {
             }
         }
         Random random = new Random();
-        int randomIndex = random.nextInt(candidates.size());
-        return candidates.get(randomIndex);
+        if (!candidates.isEmpty()) {
+            int randomIndex = random.nextInt(candidates.size());
+            return candidates.get(randomIndex);
+        } else {
+            return from;
+        }
+    }
+
+    private List<Coordinates> makeBacktrack(Map<Coordinates, Coordinates> parentMap, Entity entity) {
+        Stack<Coordinates> pathStack = new Stack<>();
+        Coordinates backtrack = entity.getCoordinates();
+        while (backtrack != null) {
+            pathStack.push(backtrack);
+            backtrack = parentMap.get(backtrack);
+        }
+        List<Coordinates> path = new ArrayList<>();
+        while (!pathStack.isEmpty()) {
+            path.add(pathStack.pop());
+        }
+//        Collections.reverse(pathStack);
+        path.remove(0); //remove start entity coordinate
+        return path;
     }
 }
 

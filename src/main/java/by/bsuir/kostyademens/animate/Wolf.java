@@ -25,32 +25,31 @@ public class Wolf extends Creature {
 
         // TODO: попробовать переписать на while, чтобы вместо i и j была одна общая переменная, соответствующая оставшемуся числу ходов на ходе
         // TODO: предусмотреть случаи, когда path.size() < speed (в таком случае ищем новый путь и идем по нему или бродим, если не нашли)
-        // Также реализовать эти пункты в кролике
-        for (int i = 0; i < speed; i++) {
+        List<Coordinates> path = pathBuilder.buildPath(map, getCoordinates(), Rabbit.class);
 
-            List<Coordinates> path = pathBuilder.buildPath(map, getCoordinates(), Rabbit.class);
+        int stepCounter = 0;
+
+        do {
             if (path == null) {
                 roamAround(map);
             } else {
-                int j;
-                for (j = i; j < speed; j++) {
-                    Coordinates coordinates = path.get(j);
-                    if (j == path.size() - 2) {
-                        break;
-                    }
-                    map.makeMove(this.getCoordinates(), coordinates, this);
-                }
-                for (; j < speed; j++) {
+                if (speed < path.size()) {
+                    map.makeMove(this.getCoordinates(), path.get(stepCounter), this);
+
+                } else {
+                    map.makeMove(this.getCoordinates(), path.get(path.size() - 1), this);
                     eat();
-                    // TODO: добавить механику дамага
+                    break;
                 }
             }
-        }
+            stepCounter++;
+        } while (stepCounter < speed);
     }
 
     @Override
     public void eat() {
         healPoints++;
+//        pathBuilder.getListOfNeighbours(getCoordinates(), map);
     }
 
 }

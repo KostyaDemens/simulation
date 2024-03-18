@@ -35,8 +35,12 @@ public class MapImpl {
     }
 
     public void makeMove(Coordinates from, Coordinates to, Creature creature) {
-        addEntity(to, creature);
-        map.remove(from, creature);
+        if (!from.equals(to)) {
+            addEntity(to, creature);
+            map.remove(from, creature);
+        } else {
+            addEntity(to, creature);
+        }
     }
 
     public Entity findEntity(Class <? extends Entity> classToFind) {
@@ -57,7 +61,7 @@ public class MapImpl {
         while (true) {
             int x = (int) (Math.random() * mapWidth + 1);
             int y = (int) (Math.random() * mapHeight + 1);
-            Coordinates coordinates = new Coordinates(x, y);
+            Coordinates coordinates = new Coordinates(y, x);
             if (isCellEmpty(coordinates)) {
                 return coordinates;
             }

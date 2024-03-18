@@ -18,14 +18,14 @@ public class Rabbit extends Creature {
 
         List<Coordinates> path = pathBuilder.buildPath(map, getCoordinates(), Carrot.class);
 
-        int i = 0;
+        int stepCounter = 0;
 
         do {
             if (path == null) {
                 roamAround(map);
             } else {
                 if (speed < path.size()) {
-                    map.makeMove(this.getCoordinates(), path.get(i), this);
+                    map.makeMove(this.getCoordinates(), path.get(stepCounter), this);
 
                 } else {
                     map.makeMove(this.getCoordinates(), path.get(path.size() - 1), this);
@@ -33,8 +33,8 @@ public class Rabbit extends Creature {
                     break;
                 }
             }
-            i++;
-        } while (i < speed);
+            stepCounter++;
+        } while (stepCounter < speed);
     }
 
 
