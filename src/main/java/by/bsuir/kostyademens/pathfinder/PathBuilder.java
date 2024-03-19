@@ -24,16 +24,6 @@ public class PathBuilder {
 
             if (!current.equals(from)) {
                 if (targetEntityClass.isInstance(entity)) {
-                    // TODO: вынести backtracking в отдельный метод + попробуй использовать стек
-//                    List<Coordinates> path = new ArrayList<>();
-//                    Coordinates backtrack = entity.getCoordinates();
-//                    while (backtrack != null) {
-//                        path.add(backtrack);
-//                        backtrack = parentMap.get(backtrack);
-//                    }
-//                    Collections.reverse(path);
-//                    path.remove(0); //remove start entity coordinate
-//                    return path;
                     return makeBacktrack(parentMap, entity);
                 }
 
@@ -93,19 +83,14 @@ public class PathBuilder {
     }
 
     private List<Coordinates> makeBacktrack(Map<Coordinates, Coordinates> parentMap, Entity entity) {
-        Stack<Coordinates> pathStack = new Stack<>();
+        Deque<Coordinates> stack = new LinkedList<>();
         Coordinates backtrack = entity.getCoordinates();
         while (backtrack != null) {
-            pathStack.push(backtrack);
+            stack.push(backtrack);
             backtrack = parentMap.get(backtrack);
         }
-        List<Coordinates> path = new ArrayList<>();
-        while (!pathStack.isEmpty()) {
-            path.add(pathStack.pop());
-        }
-//        Collections.reverse(pathStack);
-        path.remove(0); //remove start entity coordinate
-        return path;
+        stack.pop();
+        return (List<Coordinates>) stack;
     }
 }
 

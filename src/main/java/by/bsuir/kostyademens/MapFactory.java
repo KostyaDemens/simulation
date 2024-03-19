@@ -16,8 +16,8 @@ public class MapFactory {
     public MapImpl get() {
 //        return wolfAndRabbitTest();
 //        return rabbitCollapseTest();
-//        return rabbitAndCarrotTest();
-        return rabbitRoamingCollapse();
+        return rabbitAndCarrotTest();
+//        return rabbitRoamingCollapse();
     }
 
     public MapImpl rabbitCollapseTest() {
