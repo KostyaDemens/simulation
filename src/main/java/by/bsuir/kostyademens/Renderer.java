@@ -28,7 +28,7 @@ public class Renderer {
     }
 
     private String getSpriteByEntityType(Entity entity) {
-        if (entity == null) { // empty cell
+        if (entity == null) {
             return "\uD83D\uDFEB";
         }
         if (entity instanceof Rock) {
@@ -46,6 +46,6 @@ public class Renderer {
         if (entity instanceof Carrot) {
             return "\uD83E\uDD55";
         }
-        return "\uD83D\uDFEB";
+        return "?";
     }
 }

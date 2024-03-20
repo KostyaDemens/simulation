@@ -21,19 +21,20 @@ public class Rabbit extends Creature {
         int stepCounter = 0;
 
         do {
-            if (path == null) {
-                roamAround(map);
-            } else {
-                if (speed < path.size()) {
-                    map.makeMove(this.getCoordinates(), path.get(stepCounter), this);
-
+                if (path == null) {
+                    roamAround(map);
                 } else {
-                    map.makeMove(this.getCoordinates(), path.get(path.size() - 1), this);
-                    eat();
-                    break;
+                    if (speed < path.size()) {
+                        map.makeMove(getCoordinates(), path.get(stepCounter), this);
+
+                    } else {
+                        map.makeMove(getCoordinates(), path.get(path.size() - 1), this);
+                        eat();
+                        break;
+                    }
                 }
-            }
-            stepCounter++;
+                stepCounter++;
+
         } while (stepCounter < speed);
     }
 

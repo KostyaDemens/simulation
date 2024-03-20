@@ -23,23 +23,34 @@ public class Wolf extends Creature {
 
     public void makeMove(MapImpl map) {
 
-        // TODO: попробовать переписать на while, чтобы вместо i и j была одна общая переменная, соответствующая оставшемуся числу ходов на ходе
-        // TODO: предусмотреть случаи, когда path.size() < speed (в таком случае ищем новый путь и идем по нему или бродим, если не нашли)
+
         List<Coordinates> path = pathBuilder.buildPath(map, getCoordinates(), Rabbit.class);
 
         int stepCounter = 0;
 
         do {
+
             if (path == null) {
                 roamAround(map);
             } else {
+                Rabbit rabbit = (Rabbit) map.getEntityFromCoordinates(path.get(path.size() - 1));
                 if (speed < path.size()) {
-                    map.makeMove(this.getCoordinates(), path.get(stepCounter), this);
+                    map.makeMove(getCoordinates(), path.get(stepCounter), this);
 
                 } else {
-                    map.makeMove(this.getCoordinates(), path.get(path.size() - 1), this);
-                    eat();
-                    break;
+                    if (path.size() == 1) {
+
+                        rabbit.setHealPoints(rabbit.healPoints - damagePoints);
+                        if (rabbit.healPoints <= 0) {
+                            map.makeMove(getCoordinates(), path.get(path.size() - 1), this);
+                            eat();
+                            break;
+                        }
+                    } else {
+                        map.makeMove(getCoordinates(), path.get(path.size() - 2), this);
+                        break;
+                    }
+
                 }
             }
             stepCounter++;
@@ -49,7 +60,6 @@ public class Wolf extends Creature {
     @Override
     public void eat() {
         healPoints++;
-//        pathBuilder.getListOfNeighbours(getCoordinates(), map);
     }
 
 }

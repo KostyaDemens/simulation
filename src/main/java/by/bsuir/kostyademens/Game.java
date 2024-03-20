@@ -27,6 +27,9 @@ public class Game {
             renderer.render(map);
             List<Creature> creatures = map.getListOfCreaturesOnTheMap();
             for (Creature creature : creatures) {
+                if (creature.getHealPoints() <= 0) {
+                    continue;
+                }
                 creature.makeMove(map);
             }
             System.out.println();

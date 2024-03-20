@@ -15,12 +15,14 @@ import by.bsuir.kostyademens.map.MapImpl;
 public class MapFactory {
     public MapImpl get() {
 //        return wolfAndRabbitTest();
-//        return rabbitCollapseTest();
-        return rabbitAndCarrotTest();
-//        return rabbitRoamingCollapse();
+        return rabbitHealPointsCollapseTest();
+//        return rabbitAndCarrotTes();
+//        return rabbitRoamingCollapseTest();
+//        return wolfDamageTest();
+//        return readySimulation();
     }
 
-    public MapImpl rabbitCollapseTest() {
+    public MapImpl rabbitHealPointsCollapseTest() {
         MapImpl map = new MapImpl(3, 4);
 
         map.addEntity(new Coordinates(1, 1), new Rock(new Coordinates(1, 1)));
@@ -32,6 +34,8 @@ public class MapFactory {
 
         map.addEntity(new Coordinates(3, 2), new Rabbit(new Coordinates(3, 2), 2, 1));
         map.addEntity(new Coordinates(2, 3), new Rabbit(new Coordinates(2, 3), 2, 1));
+
+        map.addEntity(new Coordinates(3, 3), new Wolf(new Coordinates(3, 3), 1, 1, 2));
 
         map.addEntity(new Coordinates(4, 3), new Carrot(new Coordinates(4, 3)));
         return map;
@@ -56,7 +60,7 @@ public class MapFactory {
         return map;
     }
 
-    private MapImpl rabbitRoamingCollapse() {
+    private MapImpl rabbitRoamingCollapseTest() {
         MapImpl map = new MapImpl(2, 1);
 
         map.addEntity(new Coordinates(1, 1), new Rabbit(new Coordinates(1, 1), 1, 1));
@@ -65,11 +69,21 @@ public class MapFactory {
         return map;
     }
 
-    private MapImpl readSimulation() {
+    private MapImpl wolfDamageTest() {
+        MapImpl map = new MapImpl(2, 1);
+
+        map.addEntity(new Coordinates(1, 1), new Wolf(new Coordinates(1, 1), 1, 1, 2));
+
+        map.addEntity(new Coordinates(1, 2), new Rabbit(new Coordinates(1, 2), 5, 1));
+
+        return map;
+    }
+
+    private MapImpl readySimulation() {
         MapImpl map = new MapImpl(3, 4);
-        SpawnAction carrot = new SpawnCarrotAction(map);
-        SpawnAction rabbit = new SpawnRabbitAction(map);
-        SpawnAction wolf = new SpawnWolfAction(map);
+        SpawnAction<Carrot> carrot = new SpawnCarrotAction(map);
+        SpawnAction<Rabbit> rabbit = new SpawnRabbitAction(map);
+        SpawnAction<Wolf> wolf = new SpawnWolfAction(map);
         wolf.perform();
         carrot.perform();
         rabbit.perform();

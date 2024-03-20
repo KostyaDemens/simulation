@@ -7,10 +7,10 @@ import by.bsuir.kostyademens.animate.Wolf;
 public class EntityFactory {
 
     public static Rabbit createRabbit(Coordinates coordinates) {
-        return new Rabbit(coordinates, 2, 2);
+        return new Rabbit(coordinates, 1, 1);
     }
 
     public static Wolf createWolf(Coordinates coordinates) {
-        return new Wolf(coordinates, 3, 4, 1);
+        return new Wolf(coordinates, 1, 4, 1);
     }
 }
