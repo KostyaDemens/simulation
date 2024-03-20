@@ -2,24 +2,23 @@ package by.bsuir.kostyademens;
 
 
 import by.bsuir.kostyademens.action.SpawnAction;
-import by.bsuir.kostyademens.action.spawnActions.SpawnCarrotAction;
-import by.bsuir.kostyademens.action.spawnActions.SpawnRabbitAction;
-import by.bsuir.kostyademens.action.spawnActions.SpawnWolfAction;
+import by.bsuir.kostyademens.action.spawnActions.*;
 import by.bsuir.kostyademens.animate.Rabbit;
 import by.bsuir.kostyademens.animate.Wolf;
 import by.bsuir.kostyademens.inanimate.Carrot;
 import by.bsuir.kostyademens.inanimate.Rock;
+import by.bsuir.kostyademens.inanimate.Tree;
 import by.bsuir.kostyademens.map.MapImpl;
 
 
 public class MapFactory {
     public MapImpl get() {
 //        return wolfAndRabbitTest();
-        return rabbitHealPointsCollapseTest();
+//        return rabbitHealPointsCollapseTest();
 //        return rabbitAndCarrotTes();
 //        return rabbitRoamingCollapseTest();
 //        return wolfDamageTest();
-//        return readySimulation();
+        return readySimulation();
     }
 
     public MapImpl rabbitHealPointsCollapseTest() {
@@ -80,10 +79,15 @@ public class MapFactory {
     }
 
     private MapImpl readySimulation() {
-        MapImpl map = new MapImpl(3, 4);
+        MapImpl map = new MapImpl(10, 10);
         SpawnAction<Carrot> carrot = new SpawnCarrotAction(map);
         SpawnAction<Rabbit> rabbit = new SpawnRabbitAction(map);
         SpawnAction<Wolf> wolf = new SpawnWolfAction(map);
+        SpawnAction<Rock> rock = new SpawnRockAction(map);
+        SpawnAction<Tree> tree = new SpawnTreeAction(map);
+
+        rock.perform();
+        tree.perform();
         wolf.perform();
         carrot.perform();
         rabbit.perform();

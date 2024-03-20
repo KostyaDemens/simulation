@@ -12,7 +12,7 @@ public class SpawnTreeAction extends SpawnAction<Tree> {
 
     public SpawnTreeAction(MapImpl map) {
         super(map);
-        spawnRate = 3;
+        spawnRate = 4;
     }
 
 

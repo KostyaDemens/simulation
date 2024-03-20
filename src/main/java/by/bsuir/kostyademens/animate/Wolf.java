@@ -6,18 +6,10 @@ import by.bsuir.kostyademens.map.MapImpl;
 import java.util.List;
 
 public class Wolf extends Creature {
-    private int damagePoints;
+    private final int damagePoints;
 
     public Wolf(Coordinates coordinates, int damagePoints, int healPoints, int speed) {
         super(coordinates, healPoints, speed);
-        this.damagePoints = damagePoints;
-    }
-
-    public int getDamagePoints() {
-        return damagePoints;
-    }
-
-    public void setDamagePoints(int damagePoints) {
         this.damagePoints = damagePoints;
     }
 
@@ -43,7 +35,9 @@ public class Wolf extends Creature {
                         rabbit.setHealPoints(rabbit.healPoints - damagePoints);
                         if (rabbit.healPoints <= 0) {
                             map.makeMove(getCoordinates(), path.get(path.size() - 1), this);
-                            eat();
+                            if (healPoints < 10) {
+                                eat();
+                            }
                             break;
                         }
                     } else {
