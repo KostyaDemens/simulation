@@ -16,8 +16,6 @@ public class SpawnTreeAction extends SpawnAction<Tree> {
     }
 
 
-
-
     @Override
     public Tree spawnEntity(Coordinates coordinates) {
         return new Tree(coordinates);

@@ -36,14 +36,6 @@ public abstract class Creature extends Entity {
         this.coordinates = coordinates;
     }
 
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
     public int getHealPoints() {
         return healPoints;
     }

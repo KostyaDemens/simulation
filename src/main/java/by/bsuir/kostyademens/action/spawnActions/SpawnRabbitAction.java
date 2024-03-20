@@ -17,8 +17,6 @@ public class SpawnRabbitAction extends SpawnAction<Rabbit> {
     }
 
 
-
-
     @Override
     public Rabbit spawnEntity(Coordinates coordinates) {
         return EntityFactory.createRabbit(coordinates);

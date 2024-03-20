@@ -17,8 +17,6 @@ public class SpawnWolfAction extends SpawnAction<Wolf> {
     }
 
 
-
-
     @Override
     public Wolf spawnEntity(Coordinates coordinates) {
         return EntityFactory.createWolf(coordinates);

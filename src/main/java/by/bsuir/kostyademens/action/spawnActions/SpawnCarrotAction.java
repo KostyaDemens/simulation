@@ -16,8 +16,6 @@ public class SpawnCarrotAction extends SpawnAction<Carrot> {
     }
 
 
-
-
     @Override
     public Carrot spawnEntity(Coordinates coordinates) {
         return new Carrot(coordinates);

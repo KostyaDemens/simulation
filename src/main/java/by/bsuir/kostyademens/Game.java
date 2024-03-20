@@ -2,6 +2,7 @@ package by.bsuir.kostyademens;
 
 import by.bsuir.kostyademens.action.spawnActions.SpawnCarrotAction;
 import by.bsuir.kostyademens.animate.Creature;
+import by.bsuir.kostyademens.inanimate.Carrot;
 import by.bsuir.kostyademens.map.MapImpl;
 
 import java.util.List;
@@ -22,30 +23,18 @@ public class Game {
 
     public void start() {
         System.out.println("Press 'S' to start simulation or 'E' to exit program");
-        boolean flag = true;
-        while (flag) {
+        String endOrBegin = scanner.nextLine();
+        boolean correctInput = false;
+        while (!correctInput) {
 
-            if (scanner.nextLine().matches("[sS]")) {
-                while (true) {
-                    renderer.render(map);
-                    List<Creature> creatures = map.getListOfCreaturesOnTheMap();
-                    for (Creature creature : creatures) {
-                        if (creature.getHealPoints() <= 0) {
-                            continue;
-                        }
-                        creature.makeMove(map);
-                    }
-                    System.out.println();
-                    sleep();
-                    if (map.getListOfCarrotsOnTheMap().isEmpty()) {
-                        spawnMoreCarrots();
-                    }
-                }
-
-            } else if (scanner.nextLine().matches("[eE]")){
-                flag = false;
+            if (endOrBegin.matches("[sS]")) {
+                runSimulation();
+            } else if (endOrBegin.matches("[eE]")) {
+                System.out.println("See you later!");
+                correctInput = true;
             } else {
                 System.out.println("You write wrong symbol. Try again");
+                endOrBegin = scanner.nextLine();
             }
         }
     }
@@ -64,4 +53,20 @@ public class Game {
         carrotSpawnAction.perform();
     }
 
+
+    public void runSimulation() {
+        renderer.render(map);
+        List<Creature> creatures = map.getListOfEntitiesOnTheMap(Creature.class);
+        for (Creature creature : creatures) {
+            if (creature.getHealPoints() <= 0) {
+                continue;
+            }
+            creature.makeMove(map);
+        }
+        System.out.println();
+        sleep();
+        if (map.getListOfEntitiesOnTheMap(Carrot.class).isEmpty()) {
+            spawnMoreCarrots();
+        }
+    }
 }

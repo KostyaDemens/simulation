@@ -3,7 +3,6 @@ package by.bsuir.kostyademens.map;
 import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.Entity;
 import by.bsuir.kostyademens.animate.Creature;
-import by.bsuir.kostyademens.inanimate.Carrot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +14,7 @@ public class MapImpl {
     private final int mapWidth;
     private final int mapHeight;
 
-    public MapImpl (int mapWidth, int mapHeight) {
+    public MapImpl(int mapWidth, int mapHeight) {
         this.mapWidth = mapWidth;
         this.mapHeight = mapHeight;
     }
@@ -56,30 +55,19 @@ public class MapImpl {
         }
     }
 
-    public List<Creature> getListOfCreaturesOnTheMap() {
-        List<Creature> entityList = new ArrayList<>();
+    public <T extends Entity> List<T> getListOfEntitiesOnTheMap(Class<T> entityType) {
+        List<T> entityList = new ArrayList<>();
         for (Map.Entry<Coordinates, Entity> entry : map.entrySet()) {
             Entity entity = entry.getValue();
-            if (entity instanceof Creature) {
-                entityList.add((Creature) entity);
+            if (entityType.isInstance(entity)) {
+                entityList.add(entityType.cast(entity));
             }
         }
         return entityList;
     }
 
-    public List<Carrot> getListOfCarrotsOnTheMap() {
-        List<Carrot> carrots = new ArrayList<>();
-        for (Map.Entry<Coordinates, Entity> entry : map.entrySet()) {
-            Entity entity = entry.getValue();
-            if (entity instanceof Carrot) {
-                carrots.add((Carrot) entity);
-            }
-        }
-        return carrots;
-    }
-
     public Entity getEntityFromCoordinates(Coordinates coordinates) {
-            return map.get(coordinates);
+        return map.get(coordinates);
 
     }
 

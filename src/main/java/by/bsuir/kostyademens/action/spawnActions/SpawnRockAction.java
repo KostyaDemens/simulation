@@ -16,8 +16,6 @@ public class SpawnRockAction extends SpawnAction<Rock> {
     }
 
 
-
-
     @Override
     public Rock spawnEntity(Coordinates coordinates) {
         return new Rock(coordinates);
