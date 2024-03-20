@@ -1,16 +1,15 @@
 package by.bsuir.kostyademens;
 
+import by.bsuir.kostyademens.action.spawnActions.SpawnCarrotAction;
 import by.bsuir.kostyademens.animate.Creature;
-import by.bsuir.kostyademens.animate.Rabbit;
-import by.bsuir.kostyademens.animate.Wolf;
-import by.bsuir.kostyademens.inanimate.Carrot;
 import by.bsuir.kostyademens.map.MapImpl;
 
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Game {
-
+    private final Scanner scanner = new Scanner(System.in);
 
     private final MapImpl map;
 
@@ -21,23 +20,34 @@ public class Game {
     }
 
 
-
     public void start() {
-        while (true) {
-            renderer.render(map);
-            List<Creature> creatures = map.getListOfCreaturesOnTheMap();
-            for (Creature creature : creatures) {
-                if (creature.getHealPoints() <= 0) {
-                    continue;
+        System.out.println("Press 'S' to start simulation or 'E' to exit program");
+        boolean flag = true;
+        while (flag) {
+
+            if (scanner.nextLine().matches("[sS]")) {
+                while (true) {
+                    renderer.render(map);
+                    List<Creature> creatures = map.getListOfCreaturesOnTheMap();
+                    for (Creature creature : creatures) {
+                        if (creature.getHealPoints() <= 0) {
+                            continue;
+                        }
+                        creature.makeMove(map);
+                    }
+                    System.out.println();
+                    sleep();
+                    if (map.getListOfCarrotsOnTheMap().isEmpty()) {
+                        spawnMoreCarrots();
+                    }
                 }
-                creature.makeMove(map);
+
+            } else if (scanner.nextLine().matches("[eE]")){
+                flag = false;
+            } else {
+                System.out.println("You write wrong symbol. Try again");
             }
-            System.out.println();
-            sleep();
         }
-
-
-
     }
 
 
@@ -49,21 +59,9 @@ public class Game {
         }
     }
 
-    private boolean isObjectExists(Class<? extends Entity> classToFind) {
-        return map.findEntity(classToFind) != null;
-
-    }
-
-    private boolean isCarrotExists() {
-        return isObjectExists(Carrot.class);
-    }
-
-    private boolean isWolfExists() {
-        return isObjectExists(Wolf.class);
-    }
-
-    private boolean isRabbitExists() {
-        return isObjectExists(Rabbit.class);
+    private void spawnMoreCarrots() {
+        SpawnCarrotAction carrotSpawnAction = new SpawnCarrotAction(map);
+        carrotSpawnAction.perform();
     }
 
 }

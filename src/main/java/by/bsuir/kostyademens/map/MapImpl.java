@@ -3,6 +3,7 @@ package by.bsuir.kostyademens.map;
 import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.Entity;
 import by.bsuir.kostyademens.animate.Creature;
+import by.bsuir.kostyademens.inanimate.Carrot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,10 +31,6 @@ public class MapImpl {
         map.put(coordinates, entity);
     }
 
-    public void removeEntity(Coordinates coordinates) {
-        map.remove(coordinates);
-    }
-
     public void makeMove(Coordinates from, Coordinates to, Creature creature) {
         if (!from.equals(to)) {
             addEntity(to, creature);
@@ -41,15 +38,6 @@ public class MapImpl {
         } else {
             addEntity(to, creature);
         }
-    }
-
-    public Entity findEntity(Class <? extends Entity> classToFind) {
-        for (Map.Entry<Coordinates, Entity> entry : map.entrySet()) {
-            if (classToFind.isInstance(entry.getValue())) {
-                return entry.getValue();
-            }
-        }
-        return null;
     }
 
 
@@ -77,6 +65,17 @@ public class MapImpl {
             }
         }
         return entityList;
+    }
+
+    public List<Carrot> getListOfCarrotsOnTheMap() {
+        List<Carrot> carrots = new ArrayList<>();
+        for (Map.Entry<Coordinates, Entity> entry : map.entrySet()) {
+            Entity entity = entry.getValue();
+            if (entity instanceof Carrot) {
+                carrots.add((Carrot) entity);
+            }
+        }
+        return carrots;
     }
 
     public Entity getEntityFromCoordinates(Coordinates coordinates) {

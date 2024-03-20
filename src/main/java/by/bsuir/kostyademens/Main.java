@@ -5,8 +5,6 @@ import by.bsuir.kostyademens.map.MapImpl;
 
 public class Main {
     public static void main(String[] args) {
-
-
         MapFactory mapFactory = new MapFactory();
 
         MapImpl map = mapFactory.get();
