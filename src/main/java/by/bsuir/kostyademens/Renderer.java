@@ -6,11 +6,11 @@ import by.bsuir.kostyademens.animate.Wolf;
 import by.bsuir.kostyademens.inanimate.Carrot;
 import by.bsuir.kostyademens.inanimate.Rock;
 import by.bsuir.kostyademens.inanimate.Tree;
-import by.bsuir.kostyademens.map.MapImpl;
+import by.bsuir.kostyademens.map.GameMap;
 
 public class Renderer {
 
-    public void render(MapImpl map) {
+    public void render(GameMap map) {
         System.out.print("\033[H\033[J");
         for (int i = 1; i <= map.getMapHeight(); i++) {
             for (int j = 1; j <= map.getMapWidth(); j++) {

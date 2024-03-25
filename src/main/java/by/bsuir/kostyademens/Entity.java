@@ -1,10 +1,7 @@
 package by.bsuir.kostyademens;
 
-import by.bsuir.kostyademens.map.MapImpl;
 
 public class Entity {
-
-    protected MapImpl map;
 
     private Coordinates coordinates;
 

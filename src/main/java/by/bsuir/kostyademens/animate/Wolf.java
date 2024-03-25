@@ -1,7 +1,8 @@
 package by.bsuir.kostyademens.animate;
 
 import by.bsuir.kostyademens.Coordinates;
-import by.bsuir.kostyademens.map.MapImpl;
+import by.bsuir.kostyademens.map.GameMap;
+import by.bsuir.kostyademens.pathfinder.PathUtils;
 
 import java.util.List;
 
@@ -13,10 +14,10 @@ public class Wolf extends Creature {
         this.damagePoints = damagePoints;
     }
 
-    public void makeMove(MapImpl map) {
+    public void makeMove(GameMap map) {
 
 
-        List<Coordinates> path = pathBuilder.buildPath(map, getCoordinates(), Rabbit.class);
+        List<Coordinates> path = PathUtils.buildPathToTheNearestEntity(map, getCoordinates(), Rabbit.class);
 
         int stepCounter = 0;
 
@@ -27,21 +28,21 @@ public class Wolf extends Creature {
             } else {
                 Rabbit rabbit = (Rabbit) map.getEntityFromCoordinates(path.get(path.size() - 1));
                 if (speed < path.size()) {
-                    map.makeMove(getCoordinates(), path.get(stepCounter), this);
+                    map.moveEntityOnTheMap(getCoordinates(), path.get(stepCounter));
 
                 } else {
                     if (path.size() == 1) {
 
                         rabbit.setHealPoints(rabbit.healPoints - damagePoints);
                         if (rabbit.healPoints <= 0) {
-                            map.makeMove(getCoordinates(), path.get(path.size() - 1), this);
+                            map.moveEntityOnTheMap(getCoordinates(), path.get(path.size() - 1));
                             if (healPoints < 10) {
                                 eat();
                             }
                             break;
                         }
                     } else {
-                        map.makeMove(getCoordinates(), path.get(path.size() - 2), this);
+                        map.moveEntityOnTheMap(getCoordinates(), path.get(path.size() - 2));
                         break;
                     }
 

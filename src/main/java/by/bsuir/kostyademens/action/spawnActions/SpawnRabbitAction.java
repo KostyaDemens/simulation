@@ -5,15 +5,14 @@ import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.action.SpawnAction;
 import by.bsuir.kostyademens.animate.Rabbit;
 import by.bsuir.kostyademens.factory.EntityFactory;
-import by.bsuir.kostyademens.map.MapImpl;
+import by.bsuir.kostyademens.map.GameMap;
 
 
-public class SpawnRabbitAction extends SpawnAction<Rabbit> {
+public class SpawnRabbitAction extends SpawnAction {
 
 
-    public SpawnRabbitAction(MapImpl map) {
-        super(map);
-        spawnRate = 6;
+    public SpawnRabbitAction(GameMap map, int spawnRate) {
+        super(map, spawnRate);
     }
 
 

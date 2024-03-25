@@ -2,7 +2,8 @@ package by.bsuir.kostyademens.animate;
 
 import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.inanimate.Carrot;
-import by.bsuir.kostyademens.map.MapImpl;
+import by.bsuir.kostyademens.map.GameMap;
+import by.bsuir.kostyademens.pathfinder.PathUtils;
 
 import java.util.List;
 
@@ -14,9 +15,9 @@ public class Rabbit extends Creature {
     }
 
     @Override
-    public void makeMove(MapImpl map) {
+    public void makeMove(GameMap map) {
 
-        List<Coordinates> path = pathBuilder.buildPath(map, getCoordinates(), Carrot.class);
+        List<Coordinates> path = PathUtils.buildPathToTheNearestEntity(map, getCoordinates(), Carrot.class);
 
         int stepCounter = 0;
 
@@ -25,10 +26,10 @@ public class Rabbit extends Creature {
                 roamAround(map);
             } else {
                 if (speed < path.size()) {
-                    map.makeMove(getCoordinates(), path.get(stepCounter), this);
+                    map.moveEntityOnTheMap(getCoordinates(), path.get(stepCounter));
 
                 } else {
-                    map.makeMove(getCoordinates(), path.get(path.size() - 1), this);
+                    map.moveEntityOnTheMap(getCoordinates(), path.get(path.size() - 1));
                     eat();
                     break;
                 }

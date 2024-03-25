@@ -5,15 +5,14 @@ import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.action.SpawnAction;
 import by.bsuir.kostyademens.animate.Wolf;
 import by.bsuir.kostyademens.factory.EntityFactory;
-import by.bsuir.kostyademens.map.MapImpl;
+import by.bsuir.kostyademens.map.GameMap;
 
 
-public class SpawnWolfAction extends SpawnAction<Wolf> {
+public class SpawnWolfAction extends SpawnAction {
 
 
-    public SpawnWolfAction(MapImpl map) {
-        super(map);
-        spawnRate = 3;
+    public SpawnWolfAction(GameMap map, int spawnRate) {
+        super(map, spawnRate);
     }
 
 

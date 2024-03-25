@@ -2,24 +2,23 @@ package by.bsuir.kostyademens.map;
 
 import by.bsuir.kostyademens.Coordinates;
 import by.bsuir.kostyademens.Entity;
-import by.bsuir.kostyademens.animate.Creature;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MapImpl {
+public class GameMap {
 
     private final int mapWidth;
     private final int mapHeight;
 
-    public MapImpl(int mapWidth, int mapHeight) {
+    public GameMap(int mapWidth, int mapHeight) {
         this.mapWidth = mapWidth;
         this.mapHeight = mapHeight;
     }
 
-    HashMap<Coordinates, Entity> map = new HashMap<>();
+    private final Map<Coordinates, Entity> map = new HashMap<>();
 
     public boolean isCellEmpty(Coordinates coordinates) {
         return !map.containsKey(coordinates);
@@ -30,12 +29,13 @@ public class MapImpl {
         map.put(coordinates, entity);
     }
 
-    public void makeMove(Coordinates from, Coordinates to, Creature creature) {
+    public void moveEntityOnTheMap(Coordinates from, Coordinates to) {
+        Entity entity = getEntityFromCoordinates(from);
         if (!from.equals(to)) {
-            addEntity(to, creature);
-            map.remove(from, creature);
+            addEntity(to, entity);
+            map.remove(from, entity);
         } else {
-            addEntity(to, creature);
+            addEntity(to, entity);
         }
     }
 
@@ -55,15 +55,15 @@ public class MapImpl {
         }
     }
 
-    public <T extends Entity> List<T> getListOfEntitiesOnTheMap(Class<T> entityType) {
-        List<T> entityList = new ArrayList<>();
+    public <T> List<T> getListOfEntitiesOnTheMap(Class<T> entityType) {
+        List<T> entities = new ArrayList<>();
         for (Map.Entry<Coordinates, Entity> entry : map.entrySet()) {
             Entity entity = entry.getValue();
             if (entityType.isInstance(entity)) {
-                entityList.add(entityType.cast(entity));
+                entities.add(entityType.cast(entity));
             }
         }
-        return entityList;
+        return entities;
     }
 
     public Entity getEntityFromCoordinates(Coordinates coordinates) {
@@ -79,5 +79,24 @@ public class MapImpl {
         return mapHeight;
     }
 
+    public List<Coordinates> getListOfNeighbours(Coordinates coordinates, GameMap map) {
+        int x = coordinates.getX();
+        int y = coordinates.getY();
+        Coordinates[] arrayOfNeighbours = new Coordinates[]{
+                new Coordinates(y - 1, x),
+                new Coordinates(y + 1, x),
+                new Coordinates(y, x + 1),
+                new Coordinates(y, x - 1)
+        };
+        List<Coordinates> neighbourCells = new ArrayList<>();
+        for (Coordinates coordinate : arrayOfNeighbours) {
+
+            if (coordinate.getX() >= 1 && coordinate.getY() >= 1
+                    && coordinate.getX() <= map.getMapWidth() && coordinate.getY() <= map.getMapHeight()) {
+                neighbourCells.add(coordinate);
+            }
+        }
+        return neighbourCells;
+    }
 
 }
