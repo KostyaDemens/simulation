@@ -1,8 +1,8 @@
-package by.bsuir.kostyademens.animate;
+package by.bsuir.kostyademens.entity.creature;
 
-import by.bsuir.kostyademens.Coordinates;
+import by.bsuir.kostyademens.map.Coordinates;
 import by.bsuir.kostyademens.map.GameMap;
-import by.bsuir.kostyademens.pathfinder.PathUtils;
+import by.bsuir.kostyademens.util.PathUtils;
 
 import java.util.List;
 
@@ -21,14 +21,14 @@ public class Wolf extends Creature {
 
         int stepCounter = 0;
 
-        do {
+        while (stepCounter < speed) {
 
             if (path == null) {
                 roamAround(map);
             } else {
                 Rabbit rabbit = (Rabbit) map.getEntityFromCoordinates(path.get(path.size() - 1));
                 if (speed < path.size()) {
-                    map.moveEntityOnTheMap(getCoordinates(), path.get(stepCounter));
+                    map.moveEntityOnTheMap(getCoordinates(), path.get(speed));
 
                 } else {
                     if (path.size() == 1) {
@@ -49,7 +49,7 @@ public class Wolf extends Creature {
                 }
             }
             stepCounter++;
-        } while (stepCounter < speed);
+        }
     }
 
     @Override

@@ -1,7 +1,6 @@
 package by.bsuir.kostyademens.map;
 
-import by.bsuir.kostyademens.Coordinates;
-import by.bsuir.kostyademens.Entity;
+import by.bsuir.kostyademens.entity.Entity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,7 +54,7 @@ public class GameMap {
         }
     }
 
-    public <T> List<T> getListOfEntitiesOnTheMap(Class<T> entityType) {
+    public <T extends Entity> List<T> getListOfEntitiesOnTheMap(Class<T> entityType) {
         List<T> entities = new ArrayList<>();
         for (Map.Entry<Coordinates, Entity> entry : map.entrySet()) {
             Entity entity = entry.getValue();

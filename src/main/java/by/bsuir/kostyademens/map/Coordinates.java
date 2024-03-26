@@ -1,4 +1,4 @@
-package by.bsuir.kostyademens;
+package by.bsuir.kostyademens.map;
 
 import java.util.Objects;
 

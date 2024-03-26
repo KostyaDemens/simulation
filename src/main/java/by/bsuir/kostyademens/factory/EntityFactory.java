@@ -1,11 +1,11 @@
 package by.bsuir.kostyademens.factory;
 
-import by.bsuir.kostyademens.Coordinates;
-import by.bsuir.kostyademens.animate.Rabbit;
-import by.bsuir.kostyademens.animate.Wolf;
-import by.bsuir.kostyademens.inanimate.Carrot;
-import by.bsuir.kostyademens.inanimate.Rock;
-import by.bsuir.kostyademens.inanimate.Tree;
+import by.bsuir.kostyademens.map.Coordinates;
+import by.bsuir.kostyademens.entity.creature.Rabbit;
+import by.bsuir.kostyademens.entity.creature.Wolf;
+import by.bsuir.kostyademens.entity.inanimate.Carrot;
+import by.bsuir.kostyademens.entity.inanimate.Rock;
+import by.bsuir.kostyademens.entity.inanimate.Tree;
 
 public class EntityFactory {
 

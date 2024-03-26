@@ -1,8 +1,8 @@
-package by.bsuir.kostyademens.animate;
+package by.bsuir.kostyademens.entity.creature;
 
-import by.bsuir.kostyademens.Coordinates;
-import by.bsuir.kostyademens.Entity;
-import by.bsuir.kostyademens.inanimate.Obstacle;
+import by.bsuir.kostyademens.map.Coordinates;
+import by.bsuir.kostyademens.entity.Entity;
+import by.bsuir.kostyademens.entity.inanimate.Obstacle;
 import by.bsuir.kostyademens.map.GameMap;
 
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import java.util.Random;
 
 
 public abstract class Creature extends Entity {
+
 
     protected int healPoints;
     private Coordinates coordinates;

@@ -1,12 +1,13 @@
 package by.bsuir.kostyademens;
 
 
-import by.bsuir.kostyademens.action.SpawnAction;
-import by.bsuir.kostyademens.action.spawnActions.*;
-import by.bsuir.kostyademens.animate.Rabbit;
-import by.bsuir.kostyademens.animate.Wolf;
-import by.bsuir.kostyademens.inanimate.Carrot;
-import by.bsuir.kostyademens.inanimate.Rock;
+import by.bsuir.kostyademens.action.spawn.SpawnAction;
+import by.bsuir.kostyademens.action.spawn.*;
+import by.bsuir.kostyademens.entity.creature.Rabbit;
+import by.bsuir.kostyademens.entity.creature.Wolf;
+import by.bsuir.kostyademens.entity.inanimate.Carrot;
+import by.bsuir.kostyademens.entity.inanimate.Rock;
+import by.bsuir.kostyademens.map.Coordinates;
 import by.bsuir.kostyademens.map.GameMap;
 
 import java.util.HashMap;
@@ -15,8 +16,7 @@ import java.util.Map;
 
 public class MapFactory {
     public GameMap get() {
-//        return readySimulation();
-        return rabbitCollapseTest();
+        return wolfAndRabbitTest();
     }
 
 
@@ -57,7 +57,7 @@ public class MapFactory {
     private GameMap wolfAndRabbitTest() {
         GameMap map = new GameMap(3, 3);
         map.addEntity(new Coordinates(3, 3), new Rabbit(new Coordinates(3, 3), 2, 1));
-        map.addEntity(new Coordinates(1, 1), new Wolf(new Coordinates(1, 1), 1, 8, 1));
+        map.addEntity(new Coordinates(1, 1), new Wolf(new Coordinates(1, 1), 1, 8, 2));
         return map;
     }
 

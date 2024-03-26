@@ -1,9 +1,9 @@
-package by.bsuir.kostyademens.pathfinder;
+package by.bsuir.kostyademens.util;
 
-import by.bsuir.kostyademens.Coordinates;
-import by.bsuir.kostyademens.Entity;
-import by.bsuir.kostyademens.animate.Creature;
-import by.bsuir.kostyademens.inanimate.Obstacle;
+import by.bsuir.kostyademens.map.Coordinates;
+import by.bsuir.kostyademens.entity.Entity;
+import by.bsuir.kostyademens.entity.creature.Creature;
+import by.bsuir.kostyademens.entity.inanimate.Obstacle;
 import by.bsuir.kostyademens.map.GameMap;
 
 import java.util.*;

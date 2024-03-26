@@ -1,8 +1,7 @@
 package by.bsuir.kostyademens;
 
-import by.bsuir.kostyademens.action.spawnActions.SpawnCarrotAction;
-import by.bsuir.kostyademens.animate.Creature;
-import by.bsuir.kostyademens.inanimate.Carrot;
+import by.bsuir.kostyademens.action.spawn.SpawnCarrotAction;
+import by.bsuir.kostyademens.entity.creature.Creature;
 import by.bsuir.kostyademens.map.GameMap;
 
 import java.util.List;
@@ -53,9 +52,9 @@ public class Game {
         }
         System.out.println();
         sleep();
-        if (map.getListOfEntitiesOnTheMap(Carrot.class).isEmpty()) {
-            spawnMoreCarrots();
-        }
+//        if (map.getListOfEntitiesOnTheMap(Carrot.class).isEmpty()) {
+//            spawnMoreCarrots();
+//        }
     }
 }
 

@@ -1,9 +1,9 @@
-package by.bsuir.kostyademens.animate;
+package by.bsuir.kostyademens.entity.creature;
 
-import by.bsuir.kostyademens.Coordinates;
-import by.bsuir.kostyademens.inanimate.Carrot;
+import by.bsuir.kostyademens.map.Coordinates;
+import by.bsuir.kostyademens.entity.inanimate.Carrot;
 import by.bsuir.kostyademens.map.GameMap;
-import by.bsuir.kostyademens.pathfinder.PathUtils;
+import by.bsuir.kostyademens.util.PathUtils;
 
 import java.util.List;
 

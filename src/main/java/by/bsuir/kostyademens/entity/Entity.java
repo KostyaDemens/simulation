@@ -1,7 +1,7 @@
-package by.bsuir.kostyademens;
+package by.bsuir.kostyademens.entity;
 
-
-public class Entity {
+import by.bsuir.kostyademens.map.Coordinates;
+public abstract class Entity {
 
     private Coordinates coordinates;
 
