@@ -28,7 +28,7 @@ public class Wolf extends Creature {
             } else {
                 Rabbit rabbit = (Rabbit) map.getEntityFromCoordinates(path.get(path.size() - 1));
                 if (speed < path.size()) {
-                    map.moveEntityOnTheMap(getCoordinates(), path.get(speed));
+                    map.moveEntityOnTheMap(getCoordinates(), path.get(0));
 
                 } else {
                     if (path.size() == 1) {
@@ -39,16 +39,15 @@ public class Wolf extends Creature {
                             if (healPoints < 10) {
                                 eat();
                             }
-                            break;
                         }
                     } else {
-                        map.moveEntityOnTheMap(getCoordinates(), path.get(path.size() - 2));
-                        break;
+                        map.moveEntityOnTheMap(getCoordinates(), path.get(0));
                     }
 
                 }
             }
             stepCounter++;
+            path = PathUtils.buildPathToTheNearestEntity(map, getCoordinates(), Rabbit.class);
         }
     }
 

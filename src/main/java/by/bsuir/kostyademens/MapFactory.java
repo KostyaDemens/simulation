@@ -57,7 +57,8 @@ public class MapFactory {
     private GameMap wolfAndRabbitTest() {
         GameMap map = new GameMap(3, 3);
         map.addEntity(new Coordinates(3, 3), new Rabbit(new Coordinates(3, 3), 2, 1));
-        map.addEntity(new Coordinates(1, 1), new Wolf(new Coordinates(1, 1), 1, 8, 2));
+        map.addEntity(new Coordinates(1, 3), new Rabbit(new Coordinates(1, 3), 2, 1));
+        map.addEntity(new Coordinates(1, 1), new Wolf(new Coordinates(1, 1), 1, 8, 15));
         return map;
     }
 
