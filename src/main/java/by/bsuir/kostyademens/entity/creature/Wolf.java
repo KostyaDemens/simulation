@@ -36,7 +36,7 @@ public class Wolf extends Creature {
                         rabbit.setHealPoints(rabbit.healPoints - damagePoints);
                         if (rabbit.healPoints <= 0) {
                             map.moveEntityOnTheMap(getCoordinates(), path.get(path.size() - 1));
-                            if (healPoints < 10) {
+                            if (healPoints < 9) {
                                 eat();
                             }
                         }

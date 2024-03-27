@@ -16,7 +16,9 @@ import java.util.Map;
 
 public class MapFactory {
     public GameMap get() {
-        return wolfAndRabbitTest();
+//        return wolfAndRabbitTest();
+//        return rabbitAndCarrotTest();
+        return rabbitCollapseTest();
     }
 
 
@@ -55,10 +57,16 @@ public class MapFactory {
     }
 
     private GameMap wolfAndRabbitTest() {
-        GameMap map = new GameMap(3, 3);
-        map.addEntity(new Coordinates(3, 3), new Rabbit(new Coordinates(3, 3), 2, 1));
-        map.addEntity(new Coordinates(1, 3), new Rabbit(new Coordinates(1, 3), 2, 1));
+        GameMap map = new GameMap(20, 20);
+        map.addEntity(new Coordinates(15, 15), new Rabbit(new Coordinates(15, 15), 2, 1));
         map.addEntity(new Coordinates(1, 1), new Wolf(new Coordinates(1, 1), 1, 8, 15));
+        return map;
+    }
+
+    private GameMap rabbitAndCarrotTest() {
+        GameMap map = new GameMap(4, 4);
+        map.addEntity(new Coordinates(1, 1), new Rabbit(new Coordinates(1, 1), 1, 4));
+        map.addEntity(new Coordinates(4, 4), new Carrot(new Coordinates(4, 4)));
         return map;
     }
 

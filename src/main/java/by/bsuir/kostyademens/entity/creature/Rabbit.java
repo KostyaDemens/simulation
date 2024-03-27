@@ -21,22 +21,26 @@ public class Rabbit extends Creature {
 
         int stepCounter = 0;
 
-        do {
+        while (stepCounter < speed) {
             if (path == null) {
                 roamAround(map);
             } else {
                 if (speed < path.size()) {
-                    map.moveEntityOnTheMap(getCoordinates(), path.get(stepCounter));
-
+                    map.moveEntityOnTheMap(getCoordinates(), path.get(0));
                 } else {
-                    map.moveEntityOnTheMap(getCoordinates(), path.get(path.size() - 1));
-                    eat();
-                    break;
+                    if (path.size() == 1) {
+                        map.moveEntityOnTheMap(getCoordinates(), path.get(0));
+                        if (getHealPoints() < 9) {
+                            eat();
+                        }
+                    } else {
+                        map.moveEntityOnTheMap(getCoordinates(), path.get(0));
+                    }
                 }
             }
             stepCounter++;
-
-        } while (stepCounter < speed);
+            path = PathUtils.buildPathToTheNearestEntity(map, getCoordinates(), Carrot.class);
+        }
     }
 
 

@@ -49,8 +49,6 @@ public class Game {
                 continue;
             }
             creature.makeMove(map);
-            System.out.println();
-            renderer.render(map);
         }
         System.out.println();
         sleep();
