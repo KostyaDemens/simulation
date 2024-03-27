@@ -7,7 +7,7 @@ import by.bsuir.kostyademens.map.GameMap;
 
 
 public abstract class SpawnAction implements Action {
-    GameMap map;
+    private final GameMap map;
     protected int spawnRate;
 
     public SpawnAction(GameMap map, int spawnRate) {

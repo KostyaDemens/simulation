@@ -14,7 +14,7 @@ public class EntityFactory {
     }
 
     public static Wolf createWolf(Coordinates coordinates) {
-        return new Wolf(coordinates, 1, 4, 1);
+        return new Wolf(coordinates, 1, 4, 290);
     }
 
     public static Rock createRock(Coordinates coordinates) { return new Rock(coordinates); }
