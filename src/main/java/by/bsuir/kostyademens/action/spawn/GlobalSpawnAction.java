@@ -10,16 +10,16 @@ public class GlobalSpawnAction implements Action {
 
     private final GameMap map;
 
-    public GlobalSpawnAction (GameMap map) {
+    public GlobalSpawnAction(GameMap map) {
         this.map = map;
     }
 
     @Override
     public void perform() {
-        if (map.getListOfEntitiesOnTheMap(Carrot.class).isEmpty()) {
-            new SpawnCarrotAction(map, 6).perform();
+        if (map.getEntitiesByType(Carrot.class).isEmpty()) {
+            new SpawnCarrotAction(map, 1).perform();
         }
-        if (map.getListOfEntitiesOnTheMap(Rabbit.class).isEmpty()) {
+        if (map.getEntitiesByType(Rabbit.class).isEmpty()) {
             new SpawnRabbitAction(map, 5).perform();
         }
     }

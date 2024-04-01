@@ -1,9 +1,9 @@
 package by.bsuir.kostyademens.action.spawn;
 
 
-import by.bsuir.kostyademens.map.Coordinates;
 import by.bsuir.kostyademens.entity.creature.Rabbit;
 import by.bsuir.kostyademens.factory.EntityFactory;
+import by.bsuir.kostyademens.map.Coordinates;
 import by.bsuir.kostyademens.map.GameMap;
 
 

@@ -16,7 +16,7 @@ public class MoveCreatureAction implements Action {
 
     @Override
     public void perform() {
-        List<Creature> creatures = map.getListOfEntitiesOnTheMap(Creature.class);
+        List<Creature> creatures = map.getEntitiesByType(Creature.class);
         for (Creature creature : creatures) {
             if (creature.getHealPoints() <= 0) {
                 continue;

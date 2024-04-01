@@ -1,7 +1,6 @@
 package by.bsuir.kostyademens;
 
 import by.bsuir.kostyademens.action.Action;
-import by.bsuir.kostyademens.action.spawn.GlobalSpawnAction;
 import by.bsuir.kostyademens.action.move.MoveCreatureAction;
 import by.bsuir.kostyademens.action.spawn.*;
 import by.bsuir.kostyademens.map.GameMap;
@@ -36,11 +35,9 @@ public class Simulation {
 
 
     private void nextTurn() {
-        GlobalSpawnAction globalSpawnAction = new GlobalSpawnAction(gameMap);
         for (Action turns : turnActions) {
             turns.perform();
         }
-            globalSpawnAction.perform();
     }
 
     private void spawnEntities() {
@@ -50,13 +47,14 @@ public class Simulation {
     }
 
     private void createActions() {
-        initActions.add(new SpawnWolfAction(gameMap, 1));
-        initActions.add(new SpawnRabbitAction(gameMap, 5));
-        initActions.add(new SpawnRockAction(gameMap, 2));
-        initActions.add(new SpawnTreeAction(gameMap, 2));
-        initActions.add(new SpawnCarrotAction(gameMap, 1));
+        initActions.add(new SpawnWolfAction(gameMap, 2));
+        initActions.add(new SpawnRabbitAction(gameMap, 3));
+        initActions.add(new SpawnRockAction(gameMap, 4));
+        initActions.add(new SpawnTreeAction(gameMap, 5));
+        initActions.add(new SpawnCarrotAction(gameMap, 7));
 
         turnActions.add(new MoveCreatureAction(gameMap));
+        turnActions.add(new GlobalSpawnAction(gameMap));
     }
 
 

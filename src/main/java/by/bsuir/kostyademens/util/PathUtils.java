@@ -1,9 +1,9 @@
 package by.bsuir.kostyademens.util;
 
-import by.bsuir.kostyademens.map.Coordinates;
 import by.bsuir.kostyademens.entity.Entity;
 import by.bsuir.kostyademens.entity.creature.Creature;
 import by.bsuir.kostyademens.entity.inanimate.Obstacle;
+import by.bsuir.kostyademens.map.Coordinates;
 import by.bsuir.kostyademens.map.GameMap;
 
 import java.util.*;
@@ -32,7 +32,7 @@ public class PathUtils {
                 }
             }
 
-            for (Coordinates neighbor : map.getListOfNeighbours(current, map)) {
+            for (Coordinates neighbor : map.getNeighbours(current)) {
                 if (!visited.contains(neighbor)) {
                     visited.add(neighbor);
                     queue.add(neighbor);

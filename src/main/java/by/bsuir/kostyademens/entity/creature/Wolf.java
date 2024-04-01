@@ -1,9 +1,11 @@
 package by.bsuir.kostyademens.entity.creature;
 
+import by.bsuir.kostyademens.entity.Entity;
 import by.bsuir.kostyademens.map.Coordinates;
 import by.bsuir.kostyademens.map.GameMap;
 import by.bsuir.kostyademens.util.PathUtils;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class Wolf extends Creature {
@@ -16,44 +18,45 @@ public class Wolf extends Creature {
 
     public void makeMove(GameMap map) {
 
-
-        List<Coordinates> path = PathUtils.buildPathToTheNearestEntity(map, getCoordinates(), Rabbit.class);
-
+        Iterator<Coordinates> steps = null;
         int stepCounter = 0;
-
         while (stepCounter < speed) {
-
-            if (path == null) {
-                roamAround(map);
-            } else {
-                Rabbit rabbit = (Rabbit) map.getEntityFromCoordinates(path.get(path.size() - 1));
-                if (speed < path.size()) {
-                    map.moveEntityOnTheMap(getCoordinates(), path.get(0));
-
-                } else {
-                    if (path.size() == 1) {
-
-                        rabbit.setHealPoints(rabbit.healPoints - damagePoints);
-                        if (rabbit.healPoints <= 0) {
-                            map.moveEntityOnTheMap(getCoordinates(), path.get(path.size() - 1));
-                            if (healPoints < 9) {
-                                eat();
-                            }
-                        }
-                    } else {
-                        map.moveEntityOnTheMap(getCoordinates(), path.get(0));
+            if (steps == null) {
+                List<Coordinates> path = PathUtils.buildPathToTheNearestEntity(map, getCoordinates(), Rabbit.class);
+                if (path == null) {
+                    for (; stepCounter < speed; stepCounter++) {
+                        roamAround(map);
                     }
+                    return;
+                }
+                steps = path.iterator();
+            }
 
+            if (steps.hasNext()) {
+                Coordinates nextCoords = steps.next();
+                Entity nextEntity = map.getEntityFromCoordinates(nextCoords);
+                if (nextEntity instanceof Rabbit) {
+                    Rabbit rabbit = (Rabbit) nextEntity;
+                    while (rabbit.getHealPoints() > 0 && stepCounter < speed) {
+                        rabbit.setHealPoints(rabbit.getHealPoints() - damagePoints);
+                        stepCounter++;
+                    }
+                    if (rabbit.getHealPoints() <= 0) {
+                        eat();
+                        map.moveEntity(getCoordinates(), nextCoords);
+                        steps = null;
+                    }
+                } else {
+                    map.moveEntity(getCoordinates(), nextCoords);
+                    stepCounter++;
                 }
             }
-            stepCounter++;
-            path = PathUtils.buildPathToTheNearestEntity(map, getCoordinates(), Rabbit.class);
         }
     }
 
     @Override
     public void eat() {
-        healPoints++;
+        healPoints = Math.min(healPoints + 1, maxHealPoints);
     }
 
 }

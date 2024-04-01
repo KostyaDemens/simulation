@@ -28,7 +28,7 @@ public class GameMap {
         map.put(coordinates, entity);
     }
 
-    public void moveEntityOnTheMap(Coordinates from, Coordinates to) {
+    public void moveEntity(Coordinates from, Coordinates to) {
         Entity entity = getEntityFromCoordinates(from);
         if (!from.equals(to)) {
             addEntity(to, entity);
@@ -54,7 +54,7 @@ public class GameMap {
         }
     }
 
-    public <T extends Entity> List<T> getListOfEntitiesOnTheMap(Class<T> entityType) {
+    public <T extends Entity> List<T> getEntitiesByType(Class<T> entityType) {
         List<T> entities = new ArrayList<>();
         for (Map.Entry<Coordinates, Entity> entry : map.entrySet()) {
             Entity entity = entry.getValue();
@@ -78,7 +78,7 @@ public class GameMap {
         return mapHeight;
     }
 
-    public List<Coordinates> getListOfNeighbours(Coordinates coordinates, GameMap map) {
+    public List<Coordinates> getNeighbours(Coordinates coordinates) {
         int x = coordinates.getX();
         int y = coordinates.getY();
         Coordinates[] arrayOfNeighbours = new Coordinates[]{
@@ -91,7 +91,7 @@ public class GameMap {
         for (Coordinates coordinate : arrayOfNeighbours) {
 
             if (coordinate.getX() >= 1 && coordinate.getY() >= 1
-                    && coordinate.getX() <= map.getMapWidth() && coordinate.getY() <= map.getMapHeight()) {
+                    && coordinate.getX() <= mapWidth && coordinate.getY() <= mapHeight) {
                 neighbourCells.add(coordinate);
             }
         }

@@ -1,8 +1,8 @@
 package by.bsuir.kostyademens.action.spawn;
 
 import by.bsuir.kostyademens.action.Action;
-import by.bsuir.kostyademens.map.Coordinates;
 import by.bsuir.kostyademens.entity.Entity;
+import by.bsuir.kostyademens.map.Coordinates;
 import by.bsuir.kostyademens.map.GameMap;
 
 

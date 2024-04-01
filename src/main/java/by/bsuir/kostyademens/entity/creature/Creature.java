@@ -1,8 +1,8 @@
 package by.bsuir.kostyademens.entity.creature;
 
-import by.bsuir.kostyademens.map.Coordinates;
 import by.bsuir.kostyademens.entity.Entity;
 import by.bsuir.kostyademens.entity.inanimate.Obstacle;
+import by.bsuir.kostyademens.map.Coordinates;
 import by.bsuir.kostyademens.map.GameMap;
 
 import java.util.ArrayList;
@@ -13,6 +13,8 @@ import java.util.Random;
 public abstract class Creature extends Entity {
 
 
+    protected final int maxHealPoints;
+
     protected int healPoints;
     private Coordinates coordinates;
     protected int speed;
@@ -22,11 +24,11 @@ public abstract class Creature extends Entity {
     public abstract void eat();
 
     protected void roamAround(GameMap map) {
-        map.moveEntityOnTheMap(coordinates, getRandomNeighborFiltered(map, coordinates));
+        map.moveEntity(coordinates, getRandomNeighborFiltered(map, coordinates));
     }
 
     private Coordinates getRandomNeighborFiltered(GameMap map, Coordinates from) {
-        List<Coordinates> neighbours = map.getListOfNeighbours(from, map);
+        List<Coordinates> neighbours = map.getNeighbours(from);
         List<Coordinates> candidates = new ArrayList<>();
         for (Coordinates neighbour : neighbours) {
             Entity entity = map.getEntityFromCoordinates(neighbour);
@@ -47,6 +49,7 @@ public abstract class Creature extends Entity {
         super(coordinates);
         this.healPoints = healPoints;
         this.speed = speed;
+        this.maxHealPoints = 9;
     }
 
     public Coordinates getCoordinates() {
@@ -64,4 +67,6 @@ public abstract class Creature extends Entity {
     public void setHealPoints(int healPoints) {
         this.healPoints = healPoints;
     }
+
+
 }
