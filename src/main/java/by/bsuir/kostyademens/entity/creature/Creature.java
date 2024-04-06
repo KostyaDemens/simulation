@@ -16,7 +16,6 @@ public abstract class Creature extends Entity {
     protected final int maxHealPoints;
 
     protected int healPoints;
-    private Coordinates coordinates;
     protected int speed;
 
     public abstract void makeMove(GameMap map);
@@ -50,14 +49,6 @@ public abstract class Creature extends Entity {
         this.healPoints = healPoints;
         this.speed = speed;
         this.maxHealPoints = 9;
-    }
-
-    public Coordinates getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
     }
 
     public int getHealPoints() {
